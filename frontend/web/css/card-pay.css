@@ -1,0 +1,284 @@
+.pay-bank-card-page h2{
+    margin-top: 0px;
+    margin-bottom: 55px;
+}
+
+.pay-card-text-block{
+    margin-top: 120px;
+    font-size: 18px;
+}
+
+.col-sm-5.pay-card-text-block{
+    padding: 0px;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.pay-bank-card-page .pay-card-container{
+    width: 550px;
+    height: auto;
+    background-color: #e5e5e5;
+    padding: 43px 33px 13px;
+}
+
+.card-number{
+    display: flex;
+}
+
+.card-number .col-sm-3{
+    padding-left: 0px;
+    float: left;
+}
+
+.pay-card-cost-block, .pay-card-sms-code-block{
+    padding-left: 0px !important;
+    padding-right: 30px !important;
+}
+
+.pay-card-sms-code-block{
+    display: none;
+}
+
+.error_validate_field_card_number{
+    display: block;
+    top: 80px;
+}
+
+.form-feedback .row.same-phone-number{
+    margin-bottom: 0px !important;
+}
+
+.same-phone-number p{
+    display: block;
+    width: auto;
+    margin-left: 50px;
+}
+
+.agree-btn{
+    border: 2px solid #e4002b;
+    background: #fff;
+    width: auto;
+    color: #e4002b;
+    margin: 68px 48px 48px 48px;
+    padding: 0px 73px;
+    text-transform: uppercase;
+    font-weight: 600;
+    text-align: center;
+    height: 45px;
+    -webkit-transition: .4s ease;
+    -o-transition: .4s ease;
+    transition: .4s ease;
+}
+
+.agree-btn:hover{
+    cursor: pointer;
+    background: #e4002b;
+    color: #fff;
+}
+.error_val{
+    display: none;
+}
+
+/* Checkbox */
+.pay-checkbox-container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 0px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.pay-checkbox-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    left: 0px;
+    width: 25px;
+    height: 25px;
+    z-index: 5;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #fff;
+    border: 1px solid #d0d0d0;
+}
+
+
+.pay-checkbox-container:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+.pay-checkbox-container input:checked ~ .checkmark {
+    background-color: #e4002b;
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.pay-checkbox-container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+.pay-checkbox-container .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.contacts .contacts-boxes-wrap{
+    margin-bottom: 28px !important;
+}
+
+.grey-text-after-input{
+    width: 100%;
+    font-size: 13px;
+    color: #8a8b8a;
+    line-height: 1.2;
+    margin-bottom: 0px;
+    margin-top: 10px;
+}
+
+.apra-card-plan-list{
+    padding-left: 5px;
+}
+
+.apra-form-footer .resend-timer-block{
+    display: none;
+    position: absolute;
+    margin-left: 34px;
+    margin-top: 40px;
+}
+
+.resend-timer-block{
+    display: block;
+}
+
+.resend-timer{
+    display: inline-block;
+    color: #000000;
+    font-size: 21px;
+    font-weight: 400;
+    line-height: 20px;
+    text-transform: uppercase;
+}
+
+.resend-timer-block span{
+    color: #08a41a;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    margin-right: 15px;
+    text-transform: uppercase;
+}
+
+.pay-file{
+    display: block;
+    margin-top: 20px;
+}
+
+.pay-agree-file{
+    position: absolute;
+    margin-left: 34px;
+    margin-top: 20px;
+}
+
+.pay-file a, .pay-agree-file a{
+    text-decoration: none!important;
+    color: #8a8b8a;
+    border-bottom: 1px dotted #8a8b8a;
+}
+
+.pay-file a:hover, .pay-agree-file a:hover{
+    color: #e4002b;
+    border-bottom: 1px dotted #e4002b;
+}
+
+@media (max-width:768px){
+    .pay-agree-file{
+        display: block;
+        margin: 0px !important;
+        position: inherit !important;
+    }
+
+    .pay-bank-card-page .pay-card-container{
+        width: 100%;
+        padding: 0px;
+        background: #fff;
+    }
+
+    .pay-bank-card-page h2{
+        text-align: center;
+        width: 75%;
+        margin: 0px auto 43px auto;
+    }
+
+    .card-number .col-sm-3:last-child{
+        padding-right: 0px;
+    }
+
+    .pay-card-container .row, .pay-card-container .row.same-phone-number{
+        margin-bottom: 30px !important;
+    }
+
+    .pay-card-container .row.same-phone-number{
+        margin-bottom: 0px !important;
+    }
+
+    .pay-card-cost-block, .pay-card-sms-code-block{
+        padding: 0px 15px !important;
+        margin-top: 30px !important;
+        max-width: 50% !important;
+    }
+
+    .pay-card-container label {
+        white-space: normal;
+    }
+
+    .agree-btn{
+        width: 100%;
+        margin: 15px 15px 0px;
+    }
+    .pay-card-text-block{
+        margin-top: 30px;
+    }
+
+    .pay-card-container .row{
+        padding-bottom: 30px;
+    }
+
+    .contacts .contacts-boxes-wrap{
+        margin-bottom: 28px;
+    }
+
+    .col-sm-5.pay-card-text-block{
+        padding: 15px;
+    }
+
+    .col-sm-12#cardInputNumber{
+        padding-right: 0px;
+    }
+
+    .apra-form-footer .resend-timer-block, .apra-form-footer .resend-timer-block{
+        margin: 0px !important;
+        position: static !important;
+        padding-top: 10px;
+    }
+}

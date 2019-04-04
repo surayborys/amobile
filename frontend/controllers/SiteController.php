@@ -76,6 +76,24 @@ class SiteController extends Controller
     {
         return $this->render('index');
     }
+    
+    
+    public function actionTariff()
+    {
+        return $this->render('tariff');
+    }
+    
+    public function actionCorporate()
+    {
+        return $this->render('corporate');
+    }
+    
+    public function actionSingleTariff($tariff_name) 
+    {
+        return $this->render('single', [
+            'tariff_name' => $tariff_name,
+        ]);
+    }
 
     /**
      * Logs in a user.

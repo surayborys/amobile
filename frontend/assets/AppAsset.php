@@ -12,12 +12,26 @@ class AppAsset extends AssetBundle
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
-        'css/site.css',
+        'css/main.css',
+        'css/mvi.css',
+        'css/media.css',
+        'css/Mediatwo.css',
+        'css/boxlang.css',
+        'css/footer.css',
     ];
+    public $jsOptions = array(
+        'position' => \yii\web\View::POS_HEAD
+    ); 
     public $js = [
+        'js/layout/officeItem.js',
+        'js/layout/dataLayer.js',
+        'js/layout/box.js',
+        'js/scripts.min.js',
+        'js/mvi.js',
+        'js/connect.js',
+        'js/assets/yii.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',
-        'yii\bootstrap\BootstrapAsset',
     ];
 }

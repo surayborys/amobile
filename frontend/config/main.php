@@ -11,6 +11,7 @@ return [
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
+    'layout' => 'a_main',
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-frontend',
@@ -41,6 +42,9 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                'tariff/corporate' => 'site/corporate',
+                'tariff' => 'site/tariff', 
+                'tariff/<tariff_name:\w+>' => 'site/single-tariff',
             ],
         ],
     ],

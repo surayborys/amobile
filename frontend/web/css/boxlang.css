@@ -1,0 +1,43 @@
+.box-lang a{
+    cursor: pointer;
+}
+.label_39._right_1y{
+    display: none;
+}
+
+.lk-link{
+    position: relative;
+    display: inline-block;
+    float: right;
+    top: 25px;
+    right: 5px;
+}
+
+.lk-link .key_img:hover{
+    border-color: #e4002b;
+}
+.lk-link .key_img{
+    color: #1a1919;
+    text-decoration: none!important;
+    -webkit-transition: .4s ease;
+    -o-transition: .4s ease;
+    transition: .4s ease;
+    border:1px solid #1a1919;
+    border-radius: 5px;
+    padding: 10px;
+}
+.lk-link .key_img:hover{
+    color: #e4002b;
+}
+
+.lk-link .key_img img{
+    top: 0px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+@media (max-width: 1180px){
+    .lk-link{
+        display: none;
+    }
+}
