@@ -1,56 +1,19 @@
 <?php
 namespace frontend\controllers;
 
-use frontend\models\ResendVerificationEmailForm;
-use frontend\models\VerifyEmailForm;
 use Yii;
-use yii\base\InvalidArgumentException;
-use yii\web\BadRequestHttpException;
 use yii\web\Controller;
-use yii\filters\VerbFilter;
-use yii\filters\AccessControl;
-use common\models\LoginForm;
-use frontend\models\PasswordResetRequestForm;
-use frontend\models\ResetPasswordForm;
-use frontend\models\SignupForm;
 use frontend\models\ContactForm;
+use frontend\models\Serial;
+use yii\web\NotFoundHttpException;
+use frontend\models\Tarif;
+use yii\db\Expression;
 
 /**
  * Site controller
  */
 class SiteController extends Controller
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function behaviors()
-    {
-        return [
-            'access' => [
-                'class' => AccessControl::className(),
-                'only' => ['logout', 'signup'],
-                'rules' => [
-                    [
-                        'actions' => ['signup'],
-                        'allow' => true,
-                        'roles' => ['?'],
-                    ],
-                    [
-                        'actions' => ['logout'],
-                        'allow' => true,
-                        'roles' => ['@'],
-                    ],
-                ],
-            ],
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'logout' => ['post'],
-                ],
-            ],
-        ];
-    }
-
     /**
      * {@inheritdoc}
      */
@@ -74,61 +37,113 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        # select 4 random tariffs with eager loading
+        $tarifs = Tarif::find()->with('genCostUM')->orderBy(new Expression('rand()'))->limit(4)->all();
+        
+        if(!$tarifs) {
+            $tarifs = false;
+        }
+        
+        return $this->render('index', [
+            'tarifs' => $tarifs
+        ]);
     }
     
-    
+    /**
+     * grabs data for displaying the tariffs page
+     * 
+     * @return mixed
+     * @throws NotFoundHttpException
+     */
     public function actionTariff()
     {
-        return $this->render('tariff');
+        # use eager loading to decrease a number of db-queries
+        $serials = Serial::find()->with('tarifs.genCostUM')->where(['status_active' => Serial::SERIAL_STATUS_ACTIVE])->andFilterWhere(['not in','title', ['Корпоративные', 'Для гостей']])->orderBy('order_weight', 'id')->all();
+        if(!$serials) {
+            throw new NotFoundHttpException('Категории тарифов для данного раздела пока не описаны на сайте...');
+        }
+        
+        # set required values for displaying in the view
+        $pageTitle = 'Тарифы';
+        $headerText = '<h1 class="h1">Тарифы</h1>';
+        
+        return $this->render('tariff', [
+            'serials' => $serials,
+            'pageTitle' => $pageTitle,
+            'headerText' => $headerText,
+        ]);
     }
     
+    /**
+     * grabs data for displaying the corporate tariffs page
+     * 
+     * @return mixed
+     * @throws NotFoundHttpException
+     */
     public function actionCorporate()
     {
-        return $this->render('corporate');
+        # use eager loading to decrease a number of db-queries
+        $serials = Serial::find()->with('tarifs.genCostUM')->where(['status_active' => Serial::SERIAL_STATUS_ACTIVE])->andFilterWhere(['in', 'title', (['Корпоративные', 'Архив'])])->orderBy('order_weight', 'id')->all();
+        if(!$serials) {
+            throw new NotFoundHttpException('Категории тарифов для данного раздела пока не описаны на сайте...');
+        }
+        
+        # set required values for displaying in the view
+        $pageTitle = 'Корпоративные тарифы';        
+        $headerText = '<h1 class="h1 corporate_tarif_title">Корпоративные<br>тарифы</h1>';
+        
+        return $this->render('tariff', [
+            'serials' => $serials,
+            'pageTitle' => $pageTitle,
+            'headerText' => $headerText,
+        ]);
     }
     
-    public function actionSingleTariff($tariff_name) 
+    /**
+     * grabs data for displaying the guest tariffs page
+     * 
+     * @return mixed
+     * @throws NotFoundHttpException
+     */
+    public function actionGuestTariffs()
     {
+        # use eager loading to decrease a number of db-queries
+        $serials = Serial::find()->with('tarifs.genCostUM')->where(['status_active' => Serial::SERIAL_STATUS_ACTIVE])->andFilterWhere(['in', 'title', (['Для гостей', 'Архив'])])->orderBy('order_weight', 'id')->all();
+        if(!$serials) {
+            throw new NotFoundHttpException('Категории тарифов для данного раздела пока не описаны на сайте...');
+        }
+        
+        # set required values for displaying in the view
+        $pageTitle = 'Гостям Абхазии';        
+        $headerText = '<h1 class="h1 corporate_tarif_title">Гостям<br>Абхазии</h1>';
+        
+        return $this->render('tariff', [
+            'serials' => $serials,
+            'pageTitle' => $pageTitle,
+            'headerText' => $headerText,
+        ]);
+    }
+    
+    public function actionSingleTariff($id) 
+    {
+        # get single tarif
+        $tarif = Tarif::find()
+                ->with('condConnectCostUM', 'condFullCostUM', 'genCostUM', 'incMinutesAmobileUM','incMinutesInernationalUM', 'incMinutesSmsAbhasiaUM', 'incMinutesStationarUM', 'incInternetUM', 'incPrepaidInternationalUM', 'incPrepaidInternetUM', 'incPrepaidMinutesSmsUM', 'interCallUM', 'internetTrafficCostUM', 'overpaidCallUM', 'smsCostUM', 'videocallCostUM', 'serial')
+                ->asArray()
+                ->where(['id' => $id])
+                ->one();
+        
+        #check if tarif exists
+        if(!$tarif) {
+            throw new NotFoundHttpException('Искомый тариф не найден ...');
+        }
+        
         return $this->render('single', [
-            'tariff_name' => $tariff_name,
+            'tarif' => $tarif,
         ]);
     }
 
-    /**
-     * Logs in a user.
-     *
-     * @return mixed
-     */
-    public function actionLogin()
-    {
-        if (!Yii::$app->user->isGuest) {
-            return $this->goHome();
-        }
-
-        $model = new LoginForm();
-        if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
-        } else {
-            $model->password = '';
-
-            return $this->render('login', [
-                'model' => $model,
-            ]);
-        }
-    }
-
-    /**
-     * Logs out the current user.
-     *
-     * @return mixed
-     */
-    public function actionLogout()
-    {
-        Yii::$app->user->logout();
-
-        return $this->goHome();
-    }
+  
 
     /**
      * Displays contact page.
@@ -161,118 +176,5 @@ class SiteController extends Controller
     public function actionAbout()
     {
         return $this->render('about');
-    }
-
-    /**
-     * Signs user up.
-     *
-     * @return mixed
-     */
-    public function actionSignup()
-    {
-        $model = new SignupForm();
-        if ($model->load(Yii::$app->request->post()) && $model->signup()) {
-            Yii::$app->session->setFlash('success', 'Thank you for registration. Please check your inbox for verification email.');
-            return $this->goHome();
-        }
-
-        return $this->render('signup', [
-            'model' => $model,
-        ]);
-    }
-
-    /**
-     * Requests password reset.
-     *
-     * @return mixed
-     */
-    public function actionRequestPasswordReset()
-    {
-        $model = new PasswordResetRequestForm();
-        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-            if ($model->sendEmail()) {
-                Yii::$app->session->setFlash('success', 'Check your email for further instructions.');
-
-                return $this->goHome();
-            } else {
-                Yii::$app->session->setFlash('error', 'Sorry, we are unable to reset password for the provided email address.');
-            }
-        }
-
-        return $this->render('requestPasswordResetToken', [
-            'model' => $model,
-        ]);
-    }
-
-    /**
-     * Resets password.
-     *
-     * @param string $token
-     * @return mixed
-     * @throws BadRequestHttpException
-     */
-    public function actionResetPassword($token)
-    {
-        try {
-            $model = new ResetPasswordForm($token);
-        } catch (InvalidArgumentException $e) {
-            throw new BadRequestHttpException($e->getMessage());
-        }
-
-        if ($model->load(Yii::$app->request->post()) && $model->validate() && $model->resetPassword()) {
-            Yii::$app->session->setFlash('success', 'New password saved.');
-
-            return $this->goHome();
-        }
-
-        return $this->render('resetPassword', [
-            'model' => $model,
-        ]);
-    }
-
-    /**
-     * Verify email address
-     *
-     * @param string $token
-     * @throws BadRequestHttpException
-     * @return yii\web\Response
-     */
-    public function actionVerifyEmail($token)
-    {
-        try {
-            $model = new VerifyEmailForm($token);
-        } catch (InvalidArgumentException $e) {
-            throw new BadRequestHttpException($e->getMessage());
-        }
-        if ($user = $model->verifyEmail()) {
-            if (Yii::$app->user->login($user)) {
-                Yii::$app->session->setFlash('success', 'Your email has been confirmed!');
-                return $this->goHome();
-            }
-        }
-
-        Yii::$app->session->setFlash('error', 'Sorry, we are unable to verify your account with provided token.');
-        return $this->goHome();
-    }
-
-    /**
-     * Resend verification email
-     *
-     * @return mixed
-     */
-    public function actionResendVerificationEmail()
-    {
-        $model = new ResendVerificationEmailForm();
-        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-            if ($model->sendEmail()) {
-                Yii::$app->session->setFlash('success', 'Check your email for further instructions.');
-                return $this->goHome();
-            }
-            Yii::$app->session->setFlash('error', 'Sorry, we are unable to resend verification email for the provided email address.');
-        }
-
-        return $this->render('resendVerificationEmail', [
-            'model' => $model
-        ]);
-    }
+    }  
 }

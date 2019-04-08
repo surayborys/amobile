@@ -26,10 +26,12 @@ class AppAsset extends AssetBundle
         'js/layout/officeItem.js',
         'js/layout/dataLayer.js',
         'js/layout/box.js',
-        'js/scripts.min.js',
+        'js/layout/jivochat.js',
+        
         'js/mvi.js',
         'js/connect.js',
         'js/assets/yii.js',
+        'js/scripts.min.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',

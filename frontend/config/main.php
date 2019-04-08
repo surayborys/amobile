@@ -42,10 +42,17 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                'tariff/guest' => 'site/guest-tariffs',
                 'tariff/corporate' => 'site/corporate',
                 'tariff' => 'site/tariff', 
-                'tariff/<tariff_name:\w+>' => 'site/single-tariff',
+                'tariff/<id:\w+>' => 'site/single-tariff',
             ],
+        ],
+        'formatter' => [
+            'class' => '\frontend\components\TranslitFormatter',
+        ],
+        'delimiter' => [
+            'class' => '\frontend\components\UMdelimiter',
         ],
     ],
     'params' => $params,

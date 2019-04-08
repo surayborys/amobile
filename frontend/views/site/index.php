@@ -1,5 +1,7 @@
 <?php
 /* @var $this yii\web\View */
+/* @var $tarifs array|boolean */
+use yii\helpers\Html;
 
 $this->title = 'А-Мобайл – сотовый оператор Абхазии';
 ?>
@@ -57,96 +59,58 @@ $this->title = 'А-Мобайл – сотовый оператор Абхази
         <div class="col"><h2 class="h2 text-center index_h2">Твой а-мобайл</h2></div>
 
         <div class="slider content-width-wrap">
-
+        <?php if(!isset($tarifs) || $tarifs == false): ?>  
+            <h3 class="h3 text-center">Тарифы не найдены...</h3>
+        <?php endif;?> 
+        <?php if(isset($tarifs) && is_array($tarifs)): ?>
+            <?php foreach ($tarifs as $tarif):?>
             <div class="item-slide">
                 <div class="col">
-                    <h3 class="h3 text-center">Безлимит L</h3>
-                    <p class="first-text text-center">Для активных пользователей интернета</p>
+                    <h3 class="h3 text-center"><?= Html::encode($tarif->gen_title)?></h3>
+                    <p class="first-text text-center"><?= Html::encode($tarif->gen_short_desc)?></p>
                     <div class="price-box">
                         <div class="price_number text-center">
-                            45                </div>
+                            <?= Html::encode($tarif->gen_cost_val)?>                
+                        </div>
                         <div class="price-valute">
-                            <span class="valute">руб.</span><span class="period">день</span>                </div>
+                            <!--php: check if units of measurement are setted for the gen_cost_val field-->
+                                <?php if(isset($tarif->gen_cost_UM_id)):?>
+                                <?php 
+                                    $um = Yii::$app->delimiter->delimitUM(Html::encode($tarif->genCostUM->title));
+                                    # explode 'rub/day' to array(0=>'rub', 1=>'day')
+                                    if(is_array($um) && count($um) == 2) {
+                                        #if $um has format array(0=>'rub', '1'=>'day')
+                                        $valute = array_shift($um);
+                                        $period = array_shift($um);
+                                        echo '<span class="valute">' . $valute . '</span>'
+                                                . '<span class="period">' . $period . '</span>';
+                                    } else {
+                                        #if $um has format array(0=>'rub')
+                                        echo '<span>' . $um[0] . '</span>';
+                                    }
+
+                                ?>
+                                <?php endif;?>
+                                <!--php: /endcheck-->
+                        </div>
                     </div>
                     <div class="options_for_price text-center">
-                        <p><span>400 Мб</span> ежедневно без ограничения скорости</p>
-                        <p><span>1,9 руб./мин.</span> исходящие вызовы по Абхазии</p>
-                        <p><span>500-2048 Мб</span> турбокнопки для повышения скорости</p>
+                        <p><span><?= Html::encode($tarif->gen_advantage_1_bold)?>&nbsp;</span><?= Html::encode($tarif->gen_advantage_1_desc)?></p>
+                        <p><span><?= Html::encode($tarif->gen_advantage_2_bold)?>&nbsp;</span><?= Html::encode($tarif->gen_advantage_2_desc)?></p>
+                        <p><span><?= Html::encode($tarif->gen_advantage_3_bold)?>&nbsp;</span><?= Html::encode($tarif->gen_advantage_3_desc)?></p>
 
                     </div>
 
 
-                    <a href="http://a-test.dev.4k.com.ua/tarif.html" class="btn_class_border">О тарифе</a>
+                    <a href="/tariff/<?= Html::encode($tarif->id)?>" class="btn_class_border">О тарифе</a>
                 </div>
             </div>
-            <div class="item-slide">
-                <div class="col">
-                    <h3 class="h3 text-center">Red L</h3>
-                    <p class="first-text text-center">Для пользователей голосовыми вызовами и интернетом</p>
-                    <div class="price-box">
-                        <div class="price_number text-center">
-                            1200                </div>
-                        <div class="price-valute">
-                            <span class="valute">руб.</span><span class="period">мес.</span>                </div>
-                    </div>
-                    <div class="options_for_price text-center">
-                        <p><span>20 Гб</span> интернет-пакет</p>
-                        <p><span>500 минут и SMS </span> по Абхазии</p>
-                        <p><span>15 коп./Мб</span> сверх пакета</p>
-
-                    </div>
-
-
-                    <a href="http://a-test.dev.4k.com.ua/tarif.html" class="btn_class_border">О тарифе</a>
-                </div>
-            </div>
-            <div class="item-slide">
-                <div class="col">
-                    <h3 class="h3 text-center">Смарт M</h3>
-                    <p class="first-text text-center">Выгодные международные звонки и большой интернет-пакет</p>
-                    <div class="price-box">
-                        <div class="price_number text-center">
-                            999                </div>
-                        <div class="price-valute">
-                            <span class="valute">руб.</span><span class="period">мес.</span>                </div>
-                    </div>
-                    <div class="options_for_price text-center">
-                        <p><span>Безлимит</span>  внутри сети и на домашний</p>
-                        <p><span>7 Гб</span> включенный интернет-пакет</p>
-                        <p><span>100 минут </span> в РФ, СНГ и Турцию</p>
-
-                    </div>
-
-
-                    <a href="http://a-test.dev.4k.com.ua/tarif.html" class="btn_class_border">О тарифе</a>
-                </div>
-            </div>
-            <div class="item-slide">
-                <div class="col">
-                    <h3 class="h3 text-center">Курортный</h3>
-                    <p class="first-text text-center">Выгодная стоимость звонков в РФ и СНГ</p>
-                    <div class="price-box">
-                        <div class="price_number text-center">
-                            0                </div>
-                        <div class="price-valute">
-                            <span class="valute">руб.</span><span class="period">мес.</span>                </div>
-                    </div>
-                    <div class="options_for_price text-center">
-                        <p><span>9 руб./мин.</span> исходящие звонки в Россию</p>
-                        <p><span>минуты и мб</span> по выгодным ценам</p>
-                        <p><span>2 руб./мин.</span> по Абхазии (после 3-х мин.)</p>
-
-                    </div>
-
-
-                    <a href="http://a-test.dev.4k.com.ua/tarif.html" class="btn_class_border">О тарифе</a>
-                </div>
-            </div>
-
+            <?php endforeach;?>
+        <?php endif;?>
 
         </div>
         <div class="col double_btn">
-            <a class="btn_class_bg col-sm-2" href="http://a-test.dev.4k.com.ua/tarifi.html">Подобрать тариф</a>
+            <a class="btn_class_bg col-sm-2" href="<?= yii\helpers\Url::to('site/tariff')?>">Подобрать тариф</a>
         </div>
     </div>
 

@@ -56,7 +56,7 @@ AppAsset::register($this);
                      <li><a href="/tariff">Тарифы</a></li>
                     <li><a href="/tariff/corporate">Корпоративным клиентам</a></li>
                     <li><a href="https://www.a-home.biz">Домашний интернет и ТВ</a></li>
-                    <li><a href="/tariff/kurortnyy">Гостям Абхазии</a></li>
+                    <li><a href="/tariff/guest">Гостям Абхазии</a></li>
                 </ul>
                 <div class="box-right-icon">
                     <img class="search-header" src="/img/glass.svg" alt="search">
@@ -100,7 +100,7 @@ AppAsset::register($this);
                             <ul>
                                 <li><a href="/tariff">Тарифы</a></li>
                                 <li><a href="/tariff/corporate">Корпоративным клиентам</a></li>
-                                <li><a href="/tariff/kurortnyy">Гостям Абхазии</a></li>
+                                <li><a href="/tariff/guest">Гостям Абхазии</a></li>
                                 <li><a href="http://a-test.dev.4k.com.ua/popolnenie-balansa-2.html">Пополнение баланса</a></li>
                                 <li><a href="http://a-test.dev.4k.com.ua/pakety.html">Услуги</a></li>
                                 <li><a href="http://a-test.dev.4k.com.ua/pakety_full.html">Роуминг</a></li>
@@ -173,7 +173,7 @@ AppAsset::register($this);
                             <ul>
                                 <li><a href="/tariff">Тарифы</a></li>
                                 <li><a href="/tariff/corporate">Корпоративным клиентам</a></li>
-                                <li><a href="/tariff/kurortnyy">Гостям Абхазии</a></li>
+                                <li><a href="/tariff/guest">Гостям Абхазии</a></li>
                                 <li><a href="http://a-test.dev.4k.com.ua/popolnenie-balansa-2.html">Пополнение баланса</a></li>
                                 <li><a href="http://a-test.dev.4k.com.ua/pakety.html">Услуги</a></li>
                                 <li><a href="http://a-test.dev.4k.com.ua/pakety_full.html">Роуминг</a></li>
@@ -310,6 +310,7 @@ AppAsset::register($this);
             text-align: center;
         }
     </style>
+    
     <?php $this->endBody() ?>   
 </body>
 </html>
