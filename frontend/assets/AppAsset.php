@@ -29,7 +29,6 @@ class AppAsset extends AssetBundle
         'js/layout/jivochat.js',
         
         'js/mvi.js',
-        'js/connect.js',
         'js/assets/yii.js',
         'js/scripts.min.js',
     ];

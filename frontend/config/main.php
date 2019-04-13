@@ -42,6 +42,7 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                'connect' => 'site/connect',
                 'tariff/guest' => 'site/guest-tariffs',
                 'tariff/corporate' => 'site/corporate',
                 'tariff' => 'site/tariff', 

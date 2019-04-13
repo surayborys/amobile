@@ -7,7 +7,10 @@ use frontend\models\ContactForm;
 use frontend\models\Serial;
 use yii\web\NotFoundHttpException;
 use frontend\models\Tarif;
+use frontend\models\Order;
+use frontend\models\forms\OrderForm;
 use yii\db\Expression;
+use yii\web\Response;
 
 /**
  * Site controller
@@ -29,6 +32,18 @@ class SiteController extends Controller
             ],
         ];
     }
+    
+    /**
+    * @inheritdoc
+    */
+   public function beforeAction($action)
+   {            
+       if ($action->id == 'connect') {
+           $this->enableCsrfValidation = false;
+       }
+
+       return parent::beforeAction($action);
+   }
 
     /**
      * Displays homepage.
@@ -177,4 +192,89 @@ class SiteController extends Controller
     {
         return $this->render('about');
     }  
+    
+    /**
+     * handles adding a new record to the 'order' table
+     * 
+     * @return JSON
+     */
+    public function actionConnect()
+    {   
+        
+        #1 set the response format to JSON
+        Yii::$app->response->format = Response::FORMAT_JSON;
+
+        #1 detect the mode of the order
+        if(!$type = Yii::$app->request->post('type')) {
+            return [
+                'success' => false,
+                'field' => true,
+                'field_name' => 'Неожиданная ошибка. Невозможно обработать ваш заказ',
+            ];
+        }
+        
+        #3 create new order form and set model attributes depending on the mode of the order
+        switch ($type) {
+            case Order::MODE_IN_OFFICE:
+                
+                $form = new OrderForm();
+                $form->scenario = OrderForm::SCENARIO_OFFICE;
+                
+                $form->fullname = Yii::$app->request->post('name');
+                $form->email = Yii::$app->request->post('email');
+                $form->phone_number = Yii::$app->request->post('phone');
+                $form->mode = Yii::$app->request->post('type');
+                #$form->tarif_id = Yii::$app->request->post('tariff');
+                #check if the tarif id is sended by form, otherwise use the default tarif_id value
+                if(!$form->tarif_id = Yii::$app->request->post('tariff')):
+                    $form->tarif_id = Order::DEFAULT_TARIF_ID;
+                endif;
+                $form->office_id = Yii::$app->request->post('office_id');
+                $form->status = Order::STATUS_NEW;
+                
+                break;
+            
+            case Order::MODE_COURIER:
+                
+                $form = new OrderForm();
+                $form->scenario = OrderForm::SCENARIO_COURIER;
+                
+                $form->fullname = Yii::$app->request->post('name');
+                $form->email = Yii::$app->request->post('email');
+                $form->phone_number = Yii::$app->request->post('phone');
+                $form->mode = Yii::$app->request->post('type');
+                $form->city = Yii::$app->request->post('town');
+                $form->street = Yii::$app->request->post('street');
+                $form->house = Yii::$app->request->post('house_num');
+                $form->housing = Yii::$app->request->post('korpus');
+                $form->apartment_office_num = Yii::$app->request->post('flat_num');
+                #$form->tarif_id = Yii::$app->request->post('tariff');
+                #check if the tarif id is sended by form, otherwise use the default tarif_id value
+                if(!$form->tarif_id = Yii::$app->request->post('tariff')):
+                    $form->tarif_id = Order::DEFAULT_TARIF_ID;
+                endif;                
+                $form->status = Order::STATUS_NEW;
+                
+                break;
+            
+            default:
+                break;
+        }
+        
+        #4 validate and save the model
+        if($form && $form->validate()) {
+            $form->createOrder();
+            return [
+                'success' => true,
+                'status' => true
+            ];
+        }
+        
+        return [
+               'success' => false,
+               'field' => true,
+               'field_name' => 'Ошибка обработки. Невозможно обработать ваш заказ',
+               ];
+    }
+        
 }

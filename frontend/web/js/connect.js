@@ -1,5 +1,10 @@
+/* handles sending connect form via AJAX */
+$('body').on('click', '#btn-submit-form', function () {
+    clickConnect();
+});
 
 ymaps.ready(init);
+
 var myMap,
         myPlacemark;
 
@@ -362,10 +367,11 @@ function checkConnectForm(type) {
 }
 
 function clickConnect() {
+   
     var type = $('.connect-amobile-box .connect-tabs.active').data('type');
 
     var office = $('.connect-amobile-box .connect-office-item.active-placemark').data('office');
-    var city = $('.connect-amobile-box #city-selector').val();
+    //var city = $('.connect-amobile-box #city-selector').val();
 
     var fio = $('.connect-amobile-box #field_name').val();
     var phone = $('.connect-amobile-box #field_tel').val();
@@ -377,7 +383,7 @@ function clickConnect() {
     var korpus = $('.connect-amobile-box #field_korpus').val();
     var office_num = $('.connect-amobile-box #field_office').val();
 
-    var tariff = $('.connect-amobile-box .connect-to-amobile-btn').data('tariff');
+    var tariff = $('#btn-submit-form').attr('data-tariff');
 
     if (!checkConnectForm(type)) {
         var recaptcha = $('.connect-amobile-box #g-recaptcha-response').val();
@@ -395,17 +401,18 @@ function clickConnect() {
                     phone: phone,
                     email: email,
                     type: type,
-                    city_id: city,
+                    //city_id: city,
                     office_id: office,
                     town: town,
                     street: street,
                     house_num: house,
                     korpus: korpus,
                     flat_num: office_num,
-                    tariff: tariff,
+                    tariff: tariff
                 },
                 success: function (data) {
-                    var response = JSON.parse(data);
+                    var response = data;
+                    console.log(response);
 
                     if (response.status) {
                         document.getElementById("amobile_connect_form").reset();
@@ -452,10 +459,9 @@ function clickConnect() {
     }
 }
 
-$('.connect-amobile-box .connect-to-amobile-btn').click(function () {
-    clickConnect();
-});
+
 
 function ConnectReCaptchaCallback() {
     $('.connect-amobile-box .error_validate_field_recaptcha').text('');
 }
+                                        

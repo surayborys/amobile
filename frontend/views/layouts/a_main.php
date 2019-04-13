@@ -30,9 +30,9 @@ AppAsset::register($this);
         <meta name="keywords" content="сотовый оператор Абхазии, сотовая связь в Абхазии, Абхазия, интернет, скоростной интернет, интернет в Абхазии, Абхазии, мобильное приложение, дешевый интернет, дешевые звонки, подобрать тариф, подключиться, пополнить счет, заказать сим, sim, амабайл, амобайл, а мобаил, а мобайл, a mobile, amobile, скачать приложение, апра, apra">
         <meta name="description" content="Сотовый оператор Абхазии, предоставляющий услуги мобильной связи, высокоскоростной интернет, а также широкую линейку тарифных планов с выгодным и разнообразным набором услуг, большими пакетами минут по Абхазии и на международное направление и интернет-пакетами.">
         
-        <script src='https://www.google.com/recaptcha/api.js'></script>
+        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
         <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-57335863-5"></script>
+        <!--script async src="https://www.googletagmanager.com/gtag/js?id=UA-57335863-5"></script-->
         <?php $this->head() ?>
 </head>
 

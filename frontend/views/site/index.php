@@ -116,7 +116,8 @@ $this->title = 'А-Мобайл – сотовый оператор Абхази
 
     <div class="section_form box-section connect-amobile-box">
         <div class="content-width-wrap wrap-mob-margin">
-            <form action="javascript:void(null);" id="amobile_connect_form" class="form_amobile">
+            <?= Html::beginForm('javascript:void(null);', 'post', ['id' => "amobile_connect_form", 'class' => 'form_amobile'])?>
+            <!--form action="javascript:void(null);" id="amobile_connect_form" class="form_amobile"-->
                 <div class="row">
                     <div class="col-sm-6 w100">
                         <div class="row">
@@ -191,11 +192,11 @@ $this->title = 'А-Мобайл – сотовый оператор Абхази
                         <div class="box-order-sim">
                             <div class="row">
                                 <div class="col-sm-6 capt_s">
-                                    <div class="g-recaptcha" data-sitekey="6Lf6SV4UAAAAAGGia03ys-sGkgt6ytMz7aCzdcO2" data-callback="ConnectReCaptchaCallback"></div>
+                                    <div class="g-recaptcha" data-sitekey="6LdDSZ0UAAAAACihSvbMA1uyBreUo0C4xFWvRQiT" data-callback="ConnectReCaptchaCallback"></div>
                                     <span class="error_validate_field_recaptcha re-captcha-error">Поле обязательно для заполнения</span>
                                 </div>
                                 <div class="col-sm-6 capt_s">
-                                    <button type="button" class="btn_class_bg btn_class_bg_return connect-to-amobile-btn fck_btn" data-tariff="0">заказать sim-карту</button>
+                                    <button type="button" id="btn-submit-form" class="btn_class_bg btn_class_bg_return connect-to-amobile-btn fck_btn" data-tariff="<?= \frontend\models\Order::DEFAULT_TARIF_ID?>">заказать sim-карту</button>
                                 </div>
                             </div>
 
@@ -397,20 +398,23 @@ $this->title = 'А-Мобайл – сотовый оператор Абхази
                                 </div>
                                 <div class="col-sm-6 col-6">
                                     <label>
-                                        Корпус                                    <input type="text" placeholder="№ корпуса" name="korpus" id="field_korpus">
+                                        Корпус                                    
+                                        <input type="text" placeholder="№ корпуса" name="korpus" id="field_korpus">
                                     </label>
                                 </div>
 
                                 <div class="col-sm-12">
                                     <label>
-                                        Квартира/офис                                    <input type="text" placeholder="№ квартиры" name="office" id="field_office">
+                                        Квартира/офис                                    
+                                        <input type="text" placeholder="№ квартиры" name="office" id="field_office">
                                     </label>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </form>
+            <!--/form-->
+            <?= Html::endForm()?>
         </div>
     </div>
 
@@ -818,3 +822,18 @@ $this->title = 'А-Мобайл – сотовый оператор Абхази
         }
     </style>        
 </div>
+<?php
+$this->registerJsFile("/js/singleTarif/office.js", [
+        [
+            'depends' => [
+            \yii\web\JqueryAsset::className()
+        ]]
+    ]);
+$this->registerJsFile("/js/connect.js", [
+        [
+            'depends' => [
+            \yii\web\JqueryAsset::className(),
+            'position' => yii\web\View::POS_END
+        ]]
+    ]);
+?>

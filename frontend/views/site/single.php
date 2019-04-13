@@ -35,6 +35,7 @@ $this->title = $tarifTitle = Html::encode($tarif['gen_title']);
                                 <?php if(isset($tarif['cond_full_cost_UM_id']) && !empty($tarif['cond_full_cost_UM_id'])): ?>
                                 <?= Html::encode($tarif['condFullCostUM']['title']) ?>
                                 <?php endif;?>
+                                </span>
                             </span>
                         </p>
                         <?php endif;?>
@@ -42,9 +43,11 @@ $this->title = $tarifTitle = Html::encode($tarif['gen_title']);
                         <p>
                             <span class="text-box-p">Стоимость подключения (SIM-карты)</span>
                             <span class="color_text_bunner"><?= Html::encode($tarif['cond_connect_cost']) ?>
+                                <span class="color-gray-text">
                                 <?php if(isset($tarif['cond_connect_cost_UM_id']) && !empty($tarif['cond_connect_cost_UM_id'])): ?>
-                                <span class="color-gray-text"><?= Html::encode($tarif['condConnectCostUM']['title']) ?></span>
+                                <?= Html::encode($tarif['condConnectCostUM']['title']) ?>
                                 <?php endif;?>
+                                </span>
                             </span>
                         </p>
                         <?php endif;?>
@@ -52,9 +55,11 @@ $this->title = $tarifTitle = Html::encode($tarif['gen_title']);
                         <p>
                             <span class="text-box-p">Абонетская плата</span>
                             <span class="color_text_bunner"><?= Html::encode($tarif['gen_cost_val']) ?>
+                                <span class="color-gray-text">
                                 <?php if(isset($tarif['gen_cost_UM_id']) && !empty($tarif['gen_cost_UM_id'])): ?>
-                                <span class="color-gray-text"><?= Html::encode($tarif['genCostUM']['title']) ?></span>
+                                <?= Html::encode($tarif['genCostUM']['title']) ?>
                                 <?php endif;?>
+                                </span>
                             </span>
                         </p>
                         <?php endif;?>
@@ -88,27 +93,33 @@ $this->title = $tarifTitle = Html::encode($tarif['gen_title']);
                                 <tr>
                                     <td class="table-item-desc">Стоимость продукта</td>
                                     <td class="table-item-count"><?= Html::encode($tarif['cond_full_cost'])?></td>
+                                    <td class="table-item-attr">
                                     <?php if(isset($tarif['cond_full_cost_UM_id']) && !empty($tarif['cond_full_cost_UM_id'])): ?>
-                                    <td class="table-item-attr"><?= Html::encode($tarif['condFullCostUM']['title']) ?></td>
+                                    <?= Html::encode($tarif['condFullCostUM']['title']) ?>
                                     <?php endif;?>
+                                    </td>
                                 </tr>
                                 <?php endif; ?>
                                 <?php if(isset($tarif['cond_connect_cost'])&& !empty($tarif['cond_connect_cost'])): ?>
                                 <tr>
                                     <td class="table-item-desc">Стоимость подключения (SIM-карты)</td>
                                     <td class="table-item-count"><?= Html::encode($tarif['cond_connect_cost'])?></td>
+                                    <td class="table-item-attr">
                                     <?php if(isset($tarif['cond_connect_cost_UM_id']) && !empty($tarif['cond_connect_cost_UM_id'])): ?>
-                                    <td class="table-item-attr"><?= Html::encode($tarif['condConnectCostUM']['title']) ?></td>
+                                    <?= Html::encode($tarif['condConnectCostUM']['title']) ?>
                                     <?php endif;?>
+                                    </td>
                                 </tr>
                                 <?php endif; ?>
                                 <?php if(isset($tarif['gen_cost_val'])&& !empty($tarif['gen_cost_val'])): ?>
                                 <tr>
                                     <td class="table-item-desc">Абонентская плата</td>
                                     <td class="table-item-count"><?= Html::encode($tarif['gen_cost_val'])?></td>
+                                    <td class="table-item-attr">
                                     <?php if(isset($tarif['gen_cost_UM_id']) && !empty($tarif['gen_cost_UM_id'])): ?>
-                                    <td class="table-item-attr"><?= Html::encode($tarif['genCostUM']['title']) ?></td>
+                                    <?= Html::encode($tarif['genCostUM']['title']) ?>
                                     <?php endif;?>
+                                    </td>
                                 </tr>
                                 <?php endif; ?>
                             </tbody>
@@ -137,9 +148,11 @@ $this->title = $tarifTitle = Html::encode($tarif['gen_title']);
                                 <tr>
                                     <td class="table-item-desc">Ежемесячно предоставляемый бесплатно интернет-пакет</td>
                                     <td class="table-item-count"><?= Html::encode($tarif['inc_internet'])?></td>
+                                    <td class="table-item-attr">
                                     <?php if(isset($tarif['inc_internet_UM_id']) && !empty($tarif['inc_internet_UM_id'])):?>
-                                    <td class="table-item-attr"><?= Html::encode($tarif['incInternetUM']['title'])?></td>
+                                    <?= Html::encode($tarif['incInternetUM']['title'])?>
                                     <?php endif;?>
+                                    </td>
                                 </tr>
                                 <?php endif;?>
                                 <!--php: $s1 describes minutes-sms package-->
@@ -147,9 +160,11 @@ $this->title = $tarifTitle = Html::encode($tarif['gen_title']);
                                 <tr>
                                     <td class="table-item-desc">Ежемесячно предоставляемый пакет минут и SMS по Абхазии</td>
                                     <td class="table-item-count"><?= Html::encode($tarif['inc_minutes_sms_abhasia'])?></td>
+                                    <td class="table-item-attr">
                                     <?php if(isset($tarif['inc_minutes_sms_abhasia_UM_id']) && !empty($tarif['inc_minutes_sms_abhasia_UM_id'])):?>
-                                    <td class="table-item-attr"><?= Html::encode($tarif['incMinutesSmsAbhasiaUM']['title'])?></td>
+                                    <?= Html::encode($tarif['incMinutesSmsAbhasiaUM']['title'])?>
                                     <?php endif;?>
+                                    </td>
                                 </tr>
                                 <?php endif;?>
                                 <!--php: $s2 describes minutes inside network package-->
@@ -157,9 +172,11 @@ $this->title = $tarifTitle = Html::encode($tarif['gen_title']);
                                 <tr>
                                     <td class="table-item-desc">Ежемесячно предоставляемый пакет минут внутри сети Amobile</td>
                                     <td class="table-item-count"><?= Html::encode($tarif['inc_minutes_amobile'])?></td>
+                                    <td class="table-item-attr">
                                     <?php if(isset($tarif['inc_minutes_amobile_UM_id']) && !empty($tarif['inc_minutes_amobile_UM_id'])):?>
-                                    <td class="table-item-attr"><?= Html::encode($tarif['incMinutesAmobileUM']['title'])?></td>
+                                    <?= Html::encode($tarif['incMinutesAmobileUM']['title'])?>
                                     <?php endif;?>
+                                    </td>
                                 </tr>
                                 <?php endif;?>
                                 <!--php: $s3 describes minutes on stationar phone package-->
@@ -167,9 +184,11 @@ $this->title = $tarifTitle = Html::encode($tarif['gen_title']);
                                 <tr>
                                     <td class="table-item-desc">Ежемесячно предоставляемый пакет минут на стационарные номера</td>
                                     <td class="table-item-count"><?= Html::encode($tarif['inc_minutes_stationar'])?></td>
+                                    <td class="table-item-attr">
                                     <?php if(isset($tarif['inc_minutes_stationar_UM_id']) && !empty($tarif['inc_minutes_stationar_UM_id'])):?>
-                                    <td class="table-item-attr"><?= Html::encode($tarif['incMinutesStationarUM']['title'])?></td>
+                                    <?= Html::encode($tarif['incMinutesStationarUM']['title'])?>
                                     <?php endif;?>
+                                    </td>
                                 </tr>
                                 <?php endif;?>
                                 <!--php: $s4 describes minutes-internetional package-->
@@ -177,9 +196,11 @@ $this->title = $tarifTitle = Html::encode($tarif['gen_title']);
                                 <tr>
                                     <td class="table-item-desc">Ежемесячно предоставляемый пакет минут на международные номера</td>
                                     <td class="table-item-count"><?= Html::encode($tarif['inc_minutes_inernational'])?></td>
+                                    <td class="table-item-attr">
                                     <?php if(isset($tarif['inc_minutes_inernational_UM_id']) && !empty($tarif['inc_minutes_inernational_UM_id'])):?>
-                                    <td class="table-item-attr"><?= Html::encode($tarif['incMinutesInernationalUM']['title'])?></td>
+                                    <?= Html::encode($tarif['incMinutesInernationalUM']['title'])?>
                                     <?php endif;?>
+                                    </td>
                                 </tr>
                                 <?php endif;?>
                         </table>
@@ -205,9 +226,11 @@ $this->title = $tarifTitle = Html::encode($tarif['gen_title']);
                                 <tr>
                                     <td class="table-item-desc">Предоплаченный пакет минут и смс</td>
                                     <td class="table-item-count"><?= Html::encode($tarif['inc_prepaid_minutes_sms'])?></td>
+                                    <td class="table-item-attr">
                                     <?php if(isset($tarif['inc_prepaid_minutes_sms_UM_id']) && !empty($tarif['inc_prepaid_minutes_sms_UM_id'])):?>
-                                    <td class="table-item-attr"><?= Html::encode($tarif['incPrepaidMinutesSmsUM']['title'])?></td>
+                                    <?= Html::encode($tarif['incPrepaidMinutesSmsUM']['title'])?>
                                     <?php endif;?>
+                                    </td>
                                 </tr>
                                 <?php endif;?>
                                 <!--php: $c2 describes prepaid internet-->
@@ -215,9 +238,11 @@ $this->title = $tarifTitle = Html::encode($tarif['gen_title']);
                                 <tr>
                                     <td class="table-item-desc">Предоплаченный интренет-пакет</td>
                                     <td class="table-item-count"><?= Html::encode($tarif['inc_prepaid_internet'])?></td>
+                                    <td class="table-item-attr">
                                     <?php if(isset($tarif['inc_prepaid_internet_UM_id']) && !empty($tarif['inc_prepaid_internet_UM_id'])):?>
-                                    <td class="table-item-attr"><?= Html::encode($tarif['incPrepaidInternetUM']['title'])?></td>
+                                    <?= Html::encode($tarif['incPrepaidInternetUM']['title'])?>
                                     <?php endif;?>
+                                    </td>
                                 </tr>
                                 <?php endif;?>
                                 <!--php: $c3 describes prepaid international calls minutes-->
@@ -225,9 +250,11 @@ $this->title = $tarifTitle = Html::encode($tarif['gen_title']);
                                 <tr>
                                     <td class="table-item-desc">Предоплаченные минуы для международных звонков</td>
                                     <td class="table-item-count"><?= Html::encode($tarif['inc_prepaid_international'])?></td>
+                                    <td class="table-item-attr">
                                     <?php if(isset($tarif['inc_prepaid_international_UM_id']) && !empty($tarif['inc_prepaid_international_UM_id'])):?>
-                                    <td class="table-item-attr"><?= Html::encode($tarif['incPrepaidInternationalUM']['title'])?></td>
+                                    <?= Html::encode($tarif['incPrepaidInternationalUM']['title'])?>
                                     <?php endif;?>
+                                    </td>
                                 </tr>
                                 <?php endif;?>
                                 <!--php: $s3 describes minutes on stationar phone package-->
@@ -235,9 +262,11 @@ $this->title = $tarifTitle = Html::encode($tarif['gen_title']);
                                 <tr>
                                     <td class="table-item-desc">Ежемесячно предоставляемый пакет минут на стационарные номера</td>
                                     <td class="table-item-count"><?= Html::encode($tarif['inc_minutes_stationar'])?></td>
+                                    <td class="table-item-attr">
                                     <?php if(isset($tarif['inc_minutes_stationar_UM_id']) && !empty($tarif['inc_minutes_stationar_UM_id'])):?>
-                                    <td class="table-item-attr"><?= Html::encode($tarif['incMinutesStationarUM']['title'])?></td>
+                                    <?= Html::encode($tarif['incMinutesStationarUM']['title'])?>
                                     <?php endif;?>
+                                    </td>
                                 </tr>
                                 <?php endif;?>
                                 <!--php: $s4 describes minutes-internetional package-->
@@ -245,9 +274,11 @@ $this->title = $tarifTitle = Html::encode($tarif['gen_title']);
                                 <tr>
                                     <td class="table-item-desc">Ежемесячно предоставляемый пакет минут на международные номера</td>
                                     <td class="table-item-count"><?= Html::encode($tarif['inc_minutes_inernational'])?></td>
+                                    <td class="table-item-attr">
                                     <?php if(isset($tarif['inc_minutes_inernational_UM_id']) && !empty($tarif['inc_minutes_inernational_UM_id'])):?>
-                                    <td class="table-item-attr"><?= Html::encode($tarif['incMinutesInernationalUM']['title'])?></td>
+                                    <?= Html::encode($tarif['incMinutesInernationalUM']['title'])?>
                                     <?php endif;?>
+                                    </td>
                                 </tr>
                                 <?php endif;?>
                         </table>
@@ -265,9 +296,11 @@ $this->title = $tarifTitle = Html::encode($tarif['gen_title']);
                                 <tr>
                                     <td class="table-item-desc">Стоимость переданных/полученных данных по услуге "Интернет" </td>
                                     <td class="table-item-count"><?= Html::encode($tarif['internet_traffic_cost'])?></td>
+                                    <td class="table-item-attr">
                                     <?php if(isset($tarif['internet_traffic_cost_UM_id']) && !empty($tarif['internet_traffic_cost_UM_id'])):?>
-                                    <td class="table-item-attr"><?= Html::encode($tarif['internetTrafficCostUM']['title'])?></td>
+                                    <?= Html::encode($tarif['internetTrafficCostUM']['title'])?>
                                     <?php endif;?>
+                                    </td>
                                 </tr>            </tbody>
                         </table>
                     </div>
@@ -285,18 +318,22 @@ $this->title = $tarifTitle = Html::encode($tarif['gen_title']);
                                 <tr>
                                     <td class="table-item-desc"> SMS исходящее</td>
                                     <td class="table-item-count"><?= Html::encode($tarif['sms_out_cost']);?></td>
+                                    <td class="table-item-attr">
                                     <?php if(isset($tarif['sms_cost_UM_id']) && !empty($tarif['sms_cost_UM_id'])):?>
-                                    <td class="table-item-attr"><?= Html::encode($tarif['smsCostUM']['title'])?></td>
+                                    <?= Html::encode($tarif['smsCostUM']['title'])?>
                                     <?php endif;?>
+                                    </td>
                                 </tr>
                                 <?php endif;?>
                                 <?php if(isset($tarif['sms_in_cost'])&& !empty($tarif['sms_in_cost'])):?>
                                 <tr>
                                     <td class="table-item-desc"> SMS входящее</td>
                                     <td class="table-item-count"><?= Html::encode($tarif['sms_in_cost']);?></td>
+                                    <td class="table-item-attr">
                                     <?php if(isset($tarif['sms_cost_UM_id']) && !empty($tarif['sms_cost_UM_id'])):?>
-                                    <td class="table-item-attr"><?= Html::encode($tarif['smsCostUM']['title'])?></td>
+                                    <?= Html::encode($tarif['smsCostUM']['title'])?>
                                     <?php endif;?>
+                                    </td>
                                 </tr>
                                 <?php endif;?>           </tbody>
                         </table>
@@ -324,9 +361,11 @@ $this->title = $tarifTitle = Html::encode($tarif['gen_title']);
                                 <tr>
                                     <td class="table-item-desc">Звонки по внутри сети Amobile</td>
                                     <td class="table-item-count"><?= Html::encode($tarif['overpaid_call_amobile'])?></td>
+                                    <td class="table-item-attr">
                                     <?php if(isset($tarif['overpaid_call_UM_id']) && !empty($tarif['overpaid_call_UM_id'])):?>
-                                    <td class="table-item-attr"><?= Html::encode($tarif['overpaidCallUM']['title'])?></td>
+                                    <?= Html::encode($tarif['overpaidCallUM']['title'])?>
                                     <?php endif;?>
+                                    </td>
                                 </tr>
                                 <?php endif;?>
                                 <!--php: $f2 describes overpaid calls inside Abhasia-->
@@ -334,9 +373,11 @@ $this->title = $tarifTitle = Html::encode($tarif['gen_title']);
                                 <tr>
                                     <td class="table-item-desc">Звонки по внутри Абхазии</td>
                                     <td class="table-item-count"><?= Html::encode($tarif['overpaid_call_abhasia'])?></td>
+                                    <td class="table-item-attr">
                                     <?php if(isset($tarif['overpaid_call_UM_id']) && !empty($tarif['overpaid_call_UM_id'])):?>
-                                    <td class="table-item-attr"><?= Html::encode($tarif['overpaidCallUM']['title'])?></td>
+                                    <?= Html::encode($tarif['overpaidCallUM']['title'])?>
                                     <?php endif;?>
+                                    </td>
                                 </tr>
                                 <?php endif;?>
                                 <!--php: $f3 describes internetional overpaid calls-->
@@ -344,9 +385,11 @@ $this->title = $tarifTitle = Html::encode($tarif['gen_title']);
                                 <tr>
                                     <td class="table-item-desc">Международные звонки</td>
                                     <td class="table-item-count"><?= Html::encode($tarif['overpaid_call_international'])?></td>
+                                    <td class="table-item-attr">
                                     <?php if(isset($tarif['overpaid_call_UM_id']) && !empty($tarif['overpaid_call_UM_id'])):?>
-                                    <td class="table-item-attr"><?= Html::encode($tarif['overpaidCallUM']['title'])?></td>
+                                    <?= Html::encode($tarif['overpaidCallUM']['title'])?>
                                     <?php endif;?>
+                                    </td>
                                 </tr>
                                 <?php endif;?>
                                 <!--php: $f4 describes intercorporate overpaid calls-->
@@ -354,9 +397,11 @@ $this->title = $tarifTitle = Html::encode($tarif['gen_title']);
                                 <tr>
                                     <td class="table-item-desc">Звонки внутри корпорации</td>
                                     <td class="table-item-count"><?= Html::encode($tarif['overpaid_call_corporate'])?></td>
+                                    <td class="table-item-attr">
                                     <?php if(isset($tarif['overpaid_call_UM_id']) && !empty($tarif['overpaid_call_UM_id'])):?>
-                                    <td class="table-item-attr"><?= Html::encode($tarif['overpaidCallUM']['title'])?></td>
+                                    <?= Html::encode($tarif['overpaidCallUM']['title'])?>
                                     <?php endif;?>
+                                    </td>
                                 </tr>
                                 <?php endif;?>
                                 </tbody>
@@ -386,9 +431,11 @@ $this->title = $tarifTitle = Html::encode($tarif['gen_title']);
                             <tr>
                                 <td class="table-item-desc">Россия, включая мобильные Федеральных Операторов</td>
                                 <td class="table-item-count"><?= Html::encode($tarif['inter_russia_call'])?></td>
+                                <td class="table-item-attr">
                                 <?php if(isset($tarif['inter_call_UM_id']) && !empty($tarif['inter_call_UM_id'])):?>
-                                <td class="table-item-attr"><?= Html::encode($tarif['interCallUM']['title'])?></td>
+                                <?= Html::encode($tarif['interCallUM']['title'])?>
                                 <?php endif;?>
+                                </td>
                             </tr>
                             <?php endif;?>
                             <!--php: $e2 describes internetionl calls to CIS countries, Turkey and Baltic-->
@@ -396,9 +443,11 @@ $this->title = $tarifTitle = Html::encode($tarif['gen_title']);
                             <tr>
                                 <td class="table-item-desc">СНГ, страны Балтии, Турция</td>
                                 <td class="table-item-count"><?= Html::encode($tarif['inter_CIS_turkey_baltic'])?></td>
+                                <td class="table-item-attr">
                                 <?php if(isset($tarif['inter_call_UM_id']) && !empty($tarif['inter_call_UM_id'])):?>
-                                <td class="table-item-attr"><?= Html::encode($tarif['interCallUM']['title'])?></td>
+                                <?= Html::encode($tarif['interCallUM']['title'])?>
                                 <?php endif;?>
+                                </td>
                             </tr>
                             <?php endif;?>
                             <!--php: $e3 describes internetionl calls to Europe-->
@@ -406,9 +455,11 @@ $this->title = $tarifTitle = Html::encode($tarif['gen_title']);
                             <tr>
                                 <td class="table-item-desc">Европа</td>
                                 <td class="table-item-count"><?= Html::encode($tarif['inter_europe'])?></td>
+                                <td class="table-item-attr">
                                 <?php if(isset($tarif['inter_call_UM_id']) && !empty($tarif['inter_call_UM_id'])):?>
-                                <td class="table-item-attr"><?= Html::encode($tarif['interCallUM']['title'])?></td>
+                                <?= Html::encode($tarif['interCallUM']['title'])?>
                                 <?php endif;?>
+                                </td>
                             </tr>
                             <?php endif;?>
                             <!--php: $e4 describes internetionl calls to USA and Canada-->
@@ -416,9 +467,11 @@ $this->title = $tarifTitle = Html::encode($tarif['gen_title']);
                             <tr>
                                 <td class="table-item-desc">США, Канада</td>
                                 <td class="table-item-count"><?= Html::encode($tarif['inter_usa_canada'])?></td>
+                                <td class="table-item-attr">
                                 <?php if(isset($tarif['inter_call_UM_id']) && !empty($tarif['inter_call_UM_id'])):?>
-                                <td class="table-item-attr"><?= Html::encode($tarif['interCallUM']['title'])?></td>
+                                <?= Html::encode($tarif['interCallUM']['title'])?>
                                 <?php endif;?>
+                                </td>
                             </tr>
                             <?php endif;?>
                             <!--php: $e5 describes internetionl calls to rest of countries-->
@@ -426,9 +479,11 @@ $this->title = $tarifTitle = Html::encode($tarif['gen_title']);
                             <tr>
                                 <td class="table-item-desc">Остальные страны</td>
                                 <td class="table-item-count"><?= Html::encode($tarif['inter_rest_countries'])?></td>
+                                <td class="table-item-attr">
                                 <?php if(isset($tarif['inter_call_UM_id']) && !empty($tarif['inter_call_UM_id'])):?>
-                                <td class="table-item-attr"><?= Html::encode($tarif['interCallUM']['title'])?></td>
+                                <?= Html::encode($tarif['interCallUM']['title'])?>
                                 <?php endif;?>
+                                </td>
                             </tr>
                             <?php endif;?>  
                             </tbody>
@@ -448,18 +503,22 @@ $this->title = $tarifTitle = Html::encode($tarif['gen_title']);
                                 <tr>
                                     <td class="table-item-desc">Исходящий видео-вызов</td>
                                     <td class="table-item-count"><?= Html::encode($tarif['sms_out_cost']);?></td>
+                                    <td class="table-item-attr">
                                     <?php if(isset($tarif['sms_cost_UM_id']) && !empty($tarif['videocall_cost_UM_id'])):?>
-                                    <td class="table-item-attr"><?= Html::encode($tarif['videocallCostUM']['title'])?></td>
+                                    <?= Html::encode($tarif['videocallCostUM']['title'])?>
                                     <?php endif;?>
+                                    </td>
                                 </tr>
                                 <?php endif;?>
                                 <?php if(isset($tarif['videocall_in_cost'])&& !empty($tarif['videocall_in_cost'])):?>
                                 <tr>
                                     <td class="table-item-desc">Входящий видео-вызов</td>
                                     <td class="table-item-count"><?= Html::encode($tarif['videocall_in_cost']);?></td>
+                                    <td class="table-item-attr">
                                     <?php if(isset($tarif['sms_cost_UM_id']) && !empty($tarif['videocall_cost_UM_id'])):?>
-                                    <td class="table-item-attr"><?= Html::encode($tarif['videocallCostUM']['title'])?></td>
+                                    <?= Html::encode($tarif['videocallCostUM']['title'])?>
                                     <?php endif;?>
+                                    </td>
                                 </tr>
                                 <?php endif;?>          
                             </tbody>
@@ -528,7 +587,9 @@ $this->title = $tarifTitle = Html::encode($tarif['gen_title']);
             <div class="popap-inner connect-amobile-box">
                 <div class="section_form box-section">
                     <div class="content-width-wrap wrap-mob-margin">
-                        <form action="javascript:void(null);" id="amobile_connect_form" class="form_amobile">
+                        <?= Html::beginForm('javascript:void(null);', 'post', ['id' => "amobile_connect_form", 'class' => 'form_amobile'])?>
+                        <!--form action="javascript:void(null);" id="amobile_connect_form" class="form_amobile"-->
+                        
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="row">
@@ -565,9 +626,10 @@ $this->title = $tarifTitle = Html::encode($tarif['gen_title']);
 
 
                                             <ul class="tabs clearfix" data-tabgroup="first-tab-group">
-                                                <li><a href="#tab1" class="connect-tabs active" data-type="1"><span>Забрать в офисе</span></a></li>
-                                                <li><a href="#tab2" class="connect-tabs" data-type="2"><span>Курьером</span></a></li>
-
+                                                <li><a href="#tab1" class="connect-tabs active" data-type="1" id="form-mode-office"><span>Забрать в офисе</span></a></li>
+                                                <li><a href="#tab2" class="connect-tabs" data-type="2" id="form-mode-curier"><span>Курьером</span></a></li>
+                                                <input type="hidden" id="form-mode-id">
+                                            
                                             </ul>
                                             <section id="first-tab-group" class="tabgroup">
                                                 <div id="tab1" class="connect-city-list">
@@ -796,13 +858,15 @@ $this->title = $tarifTitle = Html::encode($tarif['gen_title']);
                                             </div>
                                             <div class="col-sm-4 col-6">
                                                 <label>
-                                                    Корпус                                            <input type="text" placeholder="№ корпуса" name="korpus" id="field_korpus">
+                                                    Корпус                                            
+                                                    <input type="text" placeholder="№ корпуса" name="korpus" id="field_korpus">
                                                 </label>
                                             </div>
 
                                             <div class="col-sm-4 col-6">
                                                 <label>
-                                                    Квартира/офис                                            <input type="text" placeholder="№ квартиры" name="office" id="field_office">
+                                                    Квартира/офис                                            
+                                                    <input type="text" placeholder="№ квартиры" name="office" id="field_office">
                                                 </label>
                                             </div>
                                         </div>
@@ -811,10 +875,10 @@ $this->title = $tarifTitle = Html::encode($tarif['gen_title']);
                                         <div class="point-text">
                                             3. Подтвердите правильность данных                                    </div>
                                         <div class="points-order-text servises-full-line ">
-                                            <p>Подключение по тарифному плану Red M <span class="price price_tarif"><span class="col2-line">800</span> руб.</span></p>
-                                            <p>Стоимость подключения (sim-карта) <span class="price price_tarif""><span class="col2-line">350</span> руб.</span></p>
+                                            <p>Подключение тарифа <?= Html::encode($tarif['gen_title'])?> <span class="price price_tarif"><span class="col2-line"><?= Html::encode($tarif['gen_cost_val'])?></span>&nbsp;<?= (isset($tarif['gen_cost_UM_id']) && !empty($tarif['gen_cost_UM_id'])) ? $tarif['genCostUM']['title'] : ''?></span></p>
+                                            <p>Стоимость подключения (sim-карта) <span class="price price_tarif"><span class="col2-line"><?= Html::encode($tarif['cond_connect_cost'])?></span>&nbsp;<?= (isset($tarif['cond_connect_cost_UM_id']) && !empty($tarif['cond_connect_cost_UM_id'])) ? $tarif['condConnectCostUM']['title'] : '' ?></span></p>
 
-                                            <p class="summ summ_lost">Итого: <span class="price price_tarif "><span class="col2-line">1150</span> руб.</span></p>
+                                            <p class="summ summ_lost">Итого: <span class="price price_tarif "><span class="col2-line"><?= Html::encode($tarif['cond_full_cost'])?></span>&nbsp;<?= (isset($tarif['cond_full_cost_UM_id']) && !empty($tarif['cond_full_cost_UM_id'])) ? $tarif['condFullCostUM']['title'] : ''?></span></p>
                                         </div>
                                     </div>
 
@@ -822,11 +886,11 @@ $this->title = $tarifTitle = Html::encode($tarif['gen_title']);
                                     <div class="box-order-sim ">
                                         <div class="row">
                                             <div class="col-sm-6 pakety_captcha">
-                                                <div class="g-recaptcha" data-sitekey="6Lf6SV4UAAAAAGGia03ys-sGkgt6ytMz7aCzdcO2" data-callback="ConnectReCaptchaCallback"></div>
+                                                <div class="g-recaptcha" data-sitekey="6LdDSZ0UAAAAACihSvbMA1uyBreUo0C4xFWvRQiT" data-callback="ConnectReCaptchaCallback"></div>
                                                 <span class="error_validate_field_recaptcha re-captcha-error">Поле обязательно для заполнения</span>
                                             </div>
                                             <div class="col-sm-6 pakety_captcha">
-                                                <button type="button" class="btn_class_bg btn_class_bg_return connect-to-amobile-btn" data-tariff="17">заказать sim-карту</button>
+                                                <button type="button" id="btn-submit-form" class="btn_class_bg btn_class_bg_return connect-to-amobile-btn" data-tariff="<?= Html::encode($tarif['id'])?>">заказать sim-карту</button>
                                             </div>
                                         </div>
 
@@ -834,7 +898,8 @@ $this->title = $tarifTitle = Html::encode($tarif['gen_title']);
                                     </div>
                                 </div>
                             </div>
-                        </form>
+                        <?= Html::endForm()?>
+                        <!--/form-->
                     </div>
                 </div>
             </div>
@@ -881,7 +946,7 @@ $this->title = $tarifTitle = Html::encode($tarif['gen_title']);
         <script src=".https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
 
         <script type="text/javascript">
-                                                        var offices_marks = [{"id": 2, "lat": "43.001630", "lng": "41.023041"}, {"id": 3, "lat": "43.000628", "lng": "41.019798"}, {"id": 4, "lat": "43.275159", "lng": "40.267144"}, {"id": 5, "lat": "42.620524", "lng": "41.746202"}, {"id": 6, "lat": "42.620524", "lng": "41.746202"}, {"id": 7, "lat": "43.286425", "lng": "40.264468"}, {"id": 8, "lat": "43.395956", "lng": "40.012254"}, {"id": 9, "lat": "43.161719", "lng": "40.341000"}, {"id": 10, "lat": "43.102517", "lng": "40.632708"}, {"id": 11, "lat": "43.087655", "lng": "40.812380"}, {"id": 12, "lat": "43.011419", "lng": "40.970151"}, {"id": 13, "lat": "43.001656", "lng": "41.005770"}, {"id": 14, "lat": "43.024141", "lng": "40.981909"}, {"id": 15, "lat": "42.932386", "lng": "41.101839"}, {"id": 16, "lat": "42.709987", "lng": "41.466955"}, {"id": 17, "lat": "42.847931", "lng": "41.685482"}];
+        var offices_marks = [{"id": 2, "lat": "43.001630", "lng": "41.023041"}, {"id": 3, "lat": "43.000628", "lng": "41.019798"}, {"id": 4, "lat": "43.275159", "lng": "40.267144"}, {"id": 5, "lat": "42.620524", "lng": "41.746202"}, {"id": 6, "lat": "42.620524", "lng": "41.746202"}, {"id": 7, "lat": "43.286425", "lng": "40.264468"}, {"id": 8, "lat": "43.395956", "lng": "40.012254"}, {"id": 9, "lat": "43.161719", "lng": "40.341000"}, {"id": 10, "lat": "43.102517", "lng": "40.632708"}, {"id": 11, "lat": "43.087655", "lng": "40.812380"}, {"id": 12, "lat": "43.011419", "lng": "40.970151"}, {"id": 13, "lat": "43.001656", "lng": "41.005770"}, {"id": 14, "lat": "43.024141", "lng": "40.981909"}, {"id": 15, "lat": "42.932386", "lng": "41.101839"}, {"id": 16, "lat": "42.709987", "lng": "41.466955"}, {"id": 17, "lat": "42.847931", "lng": "41.685482"}];
         </script></div>
     <style>
         .short-text{
@@ -890,6 +955,7 @@ $this->title = $tarifTitle = Html::encode($tarif['gen_title']);
         }
     </style>
 </div>
+
 <?php
     $this->registerJsFile("/js/singleTarif/tarif.js", [
         [
@@ -901,6 +967,13 @@ $this->title = $tarifTitle = Html::encode($tarif['gen_title']);
         [
             'depends' => [
             \yii\web\JqueryAsset::className()
+        ]]
+    ]);
+    $this->registerJsFile("/js/connect.js", [
+        [
+            'depends' => [
+            \yii\web\JqueryAsset::className(),
+            'position' => yii\web\View::POS_END
         ]]
     ]);
 ?>

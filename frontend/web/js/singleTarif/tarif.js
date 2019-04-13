@@ -1,3 +1,4 @@
+/* handles displaying of tarif's hidden attributes */
 $('.tariff-details-open').click(function () {
 
     $('.tariff-left-details').fadeOut();
