@@ -23,7 +23,6 @@ class AppAsset extends AssetBundle
         'position' => \yii\web\View::POS_HEAD
     ); 
     public $js = [
-        'js/layout/officeItem.js',
         'js/layout/dataLayer.js',
         'js/layout/box.js',
         'js/layout/jivochat.js',

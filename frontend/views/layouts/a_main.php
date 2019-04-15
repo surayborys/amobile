@@ -33,6 +33,9 @@ AppAsset::register($this);
         <script src="https://www.google.com/recaptcha/api.js" async defer></script>
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <!--script async src="https://www.googletagmanager.com/gtag/js?id=UA-57335863-5"></script-->
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
+              integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+              crossorigin=""/>
         <?php $this->head() ?>
 </head>
 

@@ -225,6 +225,14 @@ $this->title = 'А-Мобайл – сотовый оператор Абхази
                             <h4 class="h4">Салоны связи</h4>
 
                             <div id="map"></div>
+                            
+                            <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
+                               integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
+                               crossorigin="">
+                            </script>
+                            <script type="text/javascript">
+                                var offices_marks = [{"id": 2, "lat": "43.001630", "lng": "41.023041"}, {"id": 3, "lat": "43.000628", "lng": "41.019798"}, {"id": 4, "lat": "43.275159", "lng": "40.267144"}, {"id": 5, "lat": "42.620524", "lng": "41.746202"}, {"id": 6, "lat": "42.620524", "lng": "41.746202"}, {"id": 7, "lat": "43.286425", "lng": "40.264468"}, {"id": 8, "lat": "43.395956", "lng": "40.012254"}, {"id": 9, "lat": "43.161719", "lng": "40.341000"}, {"id": 10, "lat": "43.102517", "lng": "40.632708"}, {"id": 11, "lat": "43.087655", "lng": "40.812380"}, {"id": 12, "lat": "43.011419", "lng": "40.970151"}, {"id": 13, "lat": "43.001656", "lng": "41.005770"}, {"id": 14, "lat": "43.024141", "lng": "40.981909"}, {"id": 15, "lat": "42.932386", "lng": "41.101839"}, {"id": 16, "lat": "42.709987", "lng": "41.466955"}, {"id": 17, "lat": "42.847931", "lng": "41.685482"}];
+                            </script>
 
                             <div class="box-placemarks box-placemarks-hiiden">
                                 <img class="down-arrow" src="./img/arrow-down.svg" alt="arrow">
@@ -829,7 +837,7 @@ $this->registerJsFile("/js/singleTarif/office.js", [
             \yii\web\JqueryAsset::className()
         ]]
     ]);
-$this->registerJsFile("/js/connect.js", [
+$this->registerJsFile("/js/connect_1.js", [
         [
             'depends' => [
             \yii\web\JqueryAsset::className(),

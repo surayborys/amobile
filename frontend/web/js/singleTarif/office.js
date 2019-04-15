@@ -1,7 +1,7 @@
 /* handles office selection */
 jQuery(function ($) {
     $(".connect-office-item").click(function () {
-        clickOnOfficeInList(this.id, this.dataset.lat, this.dataset.lng, this.office);
+        clickOnOfficeInList(this.id, this.dataset.lat, this.dataset.lng, this.dataset.office);
     });
     $('.close-button').click(function () {
         $('.box-bunner-with-close').fadeOut();

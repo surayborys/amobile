@@ -153,7 +153,7 @@ class SiteController extends Controller
             throw new NotFoundHttpException('Искомый тариф не найден ...');
         }
         
-        return $this->render('single', [
+        return $this->render('single_1', [
             'tarif' => $tarif,
         ]);
     }
