@@ -683,7 +683,7 @@ $this->title = $tarifTitle = Html::encode($tarif['gen_title']);
                                 <div class="box-hide-map" data-target="#tab1">
                                     <div class="box-toggle-map-list ">
                                         <div data-id="list" class="listing active-point"><span>Списком</span></div>
-                                        <div data-id="map" class="maping"><span>На карте</span></div>
+                                        <div data-id="map" class="maping" id="reloadmap"><span>На карте</span></div>
                                     </div>
                                     <div  id="map" class="none-display"></div>
 
@@ -954,7 +954,19 @@ $this->title = $tarifTitle = Html::encode($tarif['gen_title']);
             }
         </style>
         <script src=".https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
-
+        <script>
+            $('#reloadmap').on('click', function(e) {
+                setTimeout(function () {
+                    mymap.invalidateSize();
+                }, 2000);
+            });
+            /*$('a.btn_class_bg.new_btn.tarif_btn.popup-with-zoom-anim').on('click', function(e) {
+                setTimeout(function () {
+                    mymap.invalidateSize();
+                }, 4000);
+            });*/
+                    
+        </script>
     </div>
     <style>
         .short-text{

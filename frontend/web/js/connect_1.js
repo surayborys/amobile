@@ -92,6 +92,10 @@ function chooseOffice(ev) {
     map_office = this.options.title;
     //recenter the map 
     mymap.panTo(this.getLatLng());
+    //reload the map
+    setTimeout(function () {
+        mymap.invalidateSize();
+    }, 4000);
 }
 
 
