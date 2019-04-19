@@ -1,9 +1,6 @@
 <?php
 /* @var $this yii\web\View */
 /* @var $tarifs array|boolean */
-/* @var array $cities-offices[] */
-/* @var json $office_marks */
-
 use yii\helpers\Html;
 
 $this->title = 'А-Мобайл – сотовый оператор Абхазии';
@@ -165,24 +162,25 @@ $this->title = 'А-Мобайл – сотовый оператор Абхази
                                     <div id="tab1" class="connect-city-list">
                                         <select class="select_order" id="city-selector" onchange="cityChangeOffice(this.value);">
 
-                                            <!--php: case $cities_offices declared and not empty-->
-                                                    <?php if (isset($cities_offices) && !empty($cities_offices)): ?>
-                                                        <?php $number_of_cities = count($cities_offices); ?>
-                                                        <!--php: first element is selected by default-->
-                                                        <?php for ($j = 0; $j < 1; $j++): ?>
-                                                            <option  value="<?= $cities_offices[$j]['id'] ?>" selected="selected" id="connect-city-item_<?= $cities_offices[$j]['id'] ?>"><?= $cities_offices[$j]['title'] ?></option>
-                                                        <?php endfor; ?>
-                                                        <!--php: if we have more than one element - show them as select items-->
-                                                        <?php if ($number_of_cities > 1): ?>
-                                                            <?php for ($j = 1; $j < $number_of_cities; $j++): ?>
-                                                                <option  value="<?= $cities_offices[$j]['id'] ?>" id="connect-city-item_<?= $cities_offices[$j]['id'] ?>"><?= $cities_offices[$j]['title'] ?></option>
-                                                            <?php endfor; ?>
-                                                        <?php endif; ?>
+                                            <option  value="1"selected="selected" id="connect-city-item_1">Сухум</option>
 
-                                                    <?php endif; ?>
-                                                    <!--php: case $cities_offices not declared or empty-->
-                                                    <?php if (!isset($cities_offices) || empty($cities_offices)): ?>
-                                                    <?php endif; ?>
+                                            <option  value="2" id="connect-city-item_2">Псоу</option>
+
+                                            <option  value="3" id="connect-city-item_3">Гагра</option>
+
+                                            <option  value="4" id="connect-city-item_4">Гал</option>
+
+                                            <option  value="5" id="connect-city-item_5">Новый Афон</option>
+
+                                            <option  value="6" id="connect-city-item_6">Гудаута</option>
+
+                                            <option  value="7" id="connect-city-item_7">Пицунда</option>
+
+                                            <option  value="8" id="connect-city-item_8">Агудзера</option>
+
+                                            <option  value="9" id="connect-city-item_9">Очамчыра</option>
+
+                                            <option  value="10" id="connect-city-item_10">Ткуарчал</option>
                                         </select>
 
                                     </div>
@@ -233,78 +231,148 @@ $this->title = 'А-Мобайл – сотовый оператор Абхази
                                crossorigin="">
                             </script>
                             <script type="text/javascript">
-                                 var offices_marks = <?= $office_marks?>;
+                                var offices_marks = [{"id": 2, "lat": "43.001630", "lng": "41.023041"}, {"id": 3, "lat": "43.000628", "lng": "41.019798"}, {"id": 4, "lat": "43.275159", "lng": "40.267144"}, {"id": 5, "lat": "42.620524", "lng": "41.746202"}, {"id": 6, "lat": "42.620524", "lng": "41.746202"}, {"id": 7, "lat": "43.286425", "lng": "40.264468"}, {"id": 8, "lat": "43.395956", "lng": "40.012254"}, {"id": 9, "lat": "43.161719", "lng": "40.341000"}, {"id": 10, "lat": "43.102517", "lng": "40.632708"}, {"id": 11, "lat": "43.087655", "lng": "40.812380"}, {"id": 12, "lat": "43.011419", "lng": "40.970151"}, {"id": 13, "lat": "43.001656", "lng": "41.005770"}, {"id": 14, "lat": "43.024141", "lng": "40.981909"}, {"id": 15, "lat": "42.932386", "lng": "41.101839"}, {"id": 16, "lat": "42.709987", "lng": "41.466955"}, {"id": 17, "lat": "42.847931", "lng": "41.685482"}];
                             </script>
 
                             <div class="box-placemarks box-placemarks-hiiden">
                                 <img class="down-arrow" src="./img/arrow-down.svg" alt="arrow">
-                               
-                                    <div class="placemarks-wrap" id="placemark_wrap">
-                                            <?php if (isset($cities_offices) && !empty($cities_offices)): ?>
-                                                <?php $number_of_cities = count($cities_offices); ?>
-                                                <!--php: first city element is active-->
-                                                <?php for ($i = 0; $i < 1; $i++): ?>
-                                                    <div id="city-offices_<?= $cities_offices[$i]['id'] ?>" class="city-offices-list active">
-                                                        <?php $number_of_city_offices = count($cities_offices[$i]['offices']) ?>
-                                                        <!--php: first city-office element is active-->
-                                                        <?php for ($m = 0; $m < 1; $m++): ?>
-                                                            <div id="city-office_<?= $cities_offices[$i]['offices'][$m]['id'] ?>" class="connect-office-item box-place active-placemark" data-office="<?= $cities_offices[$i]['offices'][$m]['id'] ?>" data-lat="<?= $cities_offices[$i]['offices'][$m]['lat'] ?>" data-lng="<?= $cities_offices[$i]['offices'][$m]['lng'] ?>" data-city="<?= $cities_offices[$i]['id'] ?>">
-                                                                <div class="box-top-text ">
-                                                                    1) <?= $cities_offices[$i]['title'] ?>, <?= $cities_offices[$i]['offices'][$m]['address'] ?>            </div>
-                                                                <div class="bottom-text">
-                                                                    График работы:                    <span><?= $cities_offices[$i]['offices'][$m]['work_hours'] ?></span>
-                                                                </div>
-                                                            </div>
-                                                        <?php endfor; ?>
-                                                        <!--php: if we have more than 0ne city-office element - show them-->
-                                                        <?php if ($number_of_city_offices > 1): ?>
-                                                            <?php for ($m = 1; $m < $number_of_city_offices; $m++): ?>
-                                                                <div id="city-office_<?= $cities_offices[$i]['offices'][$m]['id'] ?>" class="connect-office-item box-place" data-office="<?= $cities_offices[$i]['offices'][$m]['id'] ?>" data-lat="<?= $cities_offices[$i]['offices'][$m]['lat'] ?>" data-lng="<?= $cities_offices[$i]['offices'][$m]['lng'] ?>" data-city="<?= $cities_offices[$i]['id'] ?>">
-                                                                    <div class="box-top-text ">
-                                                                        1) <?= $cities_offices[$i]['title'] ?>, <?= $cities_offices[$i]['offices'][$m]['address'] ?>            </div>
-                                                                    <div class="bottom-text">
-                                                                        График работы:                    <span><?= $cities_offices[$i]['offices'][$m]['work_hours'] ?></span>
-                                                                    </div>
-                                                                </div>
-                                                            <?php endfor; ?>
-                                                        <?php endif; ?>
-                                                    </div>
-                                                <?php endfor; ?>
-                                                <!--php: if we have more than one city element - show them as unactive-->
-                                                <?php if ($number_of_cities > 1): ?>
-                                                    <?php for ($i = 1; $i < $number_of_cities; $i++): ?>
-                                                        <div id="city-offices_<?= $cities_offices[$i]['id'] ?>" class="city-offices-list">
-                                                            <?php $number_of_city_offices = count($cities_offices[$i]['offices']) ?>
-                                                            <!--php: first city-office element is active-->
-                                                            <?php for ($m = 0; $m < 1; $m++): ?>
-                                                                <div id="city-office_<?= $cities_offices[$i]['offices'][$m]['id'] ?>" class="connect-office-item box-place active-placemark" data-office="<?= $cities_offices[$i]['offices'][$m]['id'] ?>" data-lat="<?= $cities_offices[$i]['offices'][$m]['lat'] ?>" data-lng="<?= $cities_offices[$i]['offices'][$m]['lng'] ?>" data-city="<?= $cities_offices[$i]['id'] ?>">
-                                                                    <div class="box-top-text ">
-                                                                        1) <?= $cities_offices[$i]['title'] ?>, <?= $cities_offices[$i]['offices'][$m]['address'] ?>            </div>
-                                                                    <div class="bottom-text">
-                                                                        График работы:                    <span><?= $cities_offices[$i]['offices'][$m]['work_hours'] ?></span>
-                                                                    </div>
-                                                                </div>
-                                                            <?php endfor; ?>
-                                                            <!--php: if we have more than 0ne city-office element - show them-->
-                                                            <?php if ($number_of_city_offices > 1): ?>
-                                                                <?php for ($m = 1; $m < $number_of_city_offices; $m++): ?>
-                                                                    <div id="city-office_<?= $cities_offices[$i]['offices'][$m]['id'] ?>" class="connect-office-item box-place" data-office="<?= $cities_offices[$i]['offices'][$m]['id'] ?>" data-lat="<?= $cities_offices[$i]['offices'][$m]['lat'] ?>" data-lng="<?= $cities_offices[$i]['offices'][$m]['lng'] ?>" data-city="<?= $cities_offices[$i]['id'] ?>">
-                                                                        <div class="box-top-text ">
-                                                                            1) <?= $cities_offices[$i]['title'] ?>, <?= $cities_offices[$i]['offices'][$m]['address'] ?>            </div>
-                                                                        <div class="bottom-text">
-                                                                            График работы:                    <span><?= $cities_offices[$i]['offices'][$m]['work_hours'] ?></span>
-                                                                        </div>
-                                                                    </div>
-                                                                <?php endfor; ?>
-                                                            <?php endif; ?>
-                                                        </div>    
-                                                    <?php endfor; ?>
-                                                <?php endif; ?>
-                                            <?php endif; ?>    
-                                                
-                                           
+                                <div class="placemarks-wrap" id="placemark_wrap">
+
+
+                                    <div id="city-offices_1" class="city-offices-list active">
+
+                                        <div id="city-office_2" class="connect-office-item box-place active-placemark" data-office="2" data-lat="43.001630" data-lng="41.023041" data-city="1">
+                                            <div class="box-top-text ">
+                                                1) Сухум, пр. Леона, д. 17            </div>
+                                            <div class="bottom-text">
+                                                График работы:                    <span>с 09:00 до 21:00</span>
+                                            </div>
                                         </div>
-                  
+                                        <div id="city-office_3" class="connect-office-item box-place" data-office="3" data-lat="43.000628" data-lng="41.019798" data-city="1">
+                                            <div class="box-top-text ">
+                                                2) Сухум, пр. Аиааира, д. 55            </div>
+                                            <div class="bottom-text">
+                                                График работы:                    <span>с 09:00 до 21:00</span>
+                                            </div>
+                                        </div>
+                                        <div id="city-office_12" class="connect-office-item box-place" data-office="12" data-lat="43.011419" data-lng="40.970151" data-city="1">
+                                            <div class="box-top-text ">
+                                                3) Сухум, Новый район (угол ул. Агрба / ул. Киараз)            </div>
+                                            <div class="bottom-text">
+                                                График работы:                    <span>с 09:00 до 20:30 - перерыв с 14:00 до 15:00</span>
+                                            </div>
+                                        </div>
+                                        <div id="city-office_13" class="connect-office-item box-place" data-office="13" data-lat="43.001656" data-lng="41.005770" data-city="1">
+                                            <div class="box-top-text ">
+                                                4) Сухум, ул. В. Г. Ардзинба, Центральный рынок (экспресс-офис)            </div>
+                                            <div class="bottom-text">
+                                                График работы:                    <span>с 08:00 до 18:00</span>
+                                            </div>
+                                        </div>
+                                        <div id="city-office_14" class="connect-office-item box-place" data-office="14" data-lat="43.024141" data-lng="40.981909" data-city="1">
+                                            <div class="box-top-text ">
+                                                5) Сухум, ул. Эшба, д. 166, Супермаркет «Сухум»              </div>
+                                            <div class="bottom-text">
+                                                График работы:                    <span>с 09:00 до 21:30</span>
+                                            </div>
+                                        </div>
+                                    </div><div id="city-offices_2" class="city-offices-list">
+
+                                        <div id="city-office_8" class="connect-office-item box-place" data-office="8" data-lat="43.395956" data-lng="40.012254" data-city="2">
+                                            <div class="box-top-text ">
+                                                1) Псоу, Псоу            </div>
+                                            <div class="bottom-text">
+                                                График работы:                    <span>с 08:30 до 22:00</span>
+                                            </div>
+                                        </div>
+                                    </div><div id="city-offices_3" class="city-offices-list">
+
+                                        <div id="city-office_4" class="connect-office-item box-place" data-office="4" data-lat="43.275159" data-lng="40.267144" data-city="3">
+                                            <div class="box-top-text ">
+                                                1) Гагра, ул. Абазгаа 55/1            </div>
+                                            <div class="bottom-text">
+                                                График работы:                    <span>с 08:30 до 22:00</span>
+                                            </div>
+                                        </div>
+                                        <div id="city-office_7" class="connect-office-item box-place" data-office="7" data-lat="43.286425" data-lng="40.264468" data-city="3">
+                                            <div class="box-top-text ">
+                                                2) Гагра, ул. Апсха Леона, д. 41            </div>
+                                            <div class="bottom-text">
+                                                График работы:                    <span>с 08:30 до 22:00</span>
+                                            </div>
+                                        </div>
+                                    </div><div id="city-offices_4" class="city-offices-list">
+
+                                        <div id="city-office_5" class="connect-office-item box-place" data-office="5" data-lat="42.620524" data-lng="41.746202" data-city="4">
+                                            <div class="box-top-text ">
+                                                1) Гал, ул. Самурзаканская, д. 94            </div>
+                                            <div class="bottom-text">
+                                                График работы:                    <span>с 08:30 до 18:00 - перерыв с 13:00 до 14:00</span>
+                                            </div>
+                                        </div>
+                                        <div id="city-office_6" class="connect-office-item box-place" data-office="6" data-lat="42.620524" data-lng="41.746202" data-city="4">
+                                            <div class="box-top-text ">
+                                                2) Гал, ул. Самурзаканская, д. 6            </div>
+                                            <div class="bottom-text">
+                                                График работы:                    <span>с 09:00 до 20:00 - перерыв с 14:00 до 15:00</span>
+                                            </div>
+                                        </div>
+                                    </div><div id="city-offices_5" class="city-offices-list">
+
+                                        <div id="city-office_11" class="connect-office-item box-place" data-office="11" data-lat="43.087655" data-lng="40.812380" data-city="5">
+                                            <div class="box-top-text ">
+                                                1) Новый Афон, пл. Героев, д. 1            </div>
+                                            <div class="bottom-text">
+                                                График работы:                    <span>с 09:00 до 21:00 - перерыв с 14:00 до 15:00</span>
+                                            </div>
+                                        </div>
+                                    </div><div id="city-offices_6" class="city-offices-list">
+
+                                        <div id="city-office_10" class="connect-office-item box-place" data-office="10" data-lat="43.102517" data-lng="40.632708" data-city="6">
+                                            <div class="box-top-text ">
+                                                1) Гудаута, Пр. Героев, д. 9            </div>
+                                            <div class="bottom-text">
+                                                График работы:                    <span>с 09:00 до 20:30</span>
+                                            </div>
+                                        </div>
+                                    </div><div id="city-offices_7" class="city-offices-list">
+
+                                        <div id="city-office_9" class="connect-office-item box-place" data-office="9" data-lat="43.161719" data-lng="40.341000" data-city="7">
+                                            <div class="box-top-text ">
+                                                1) Пицунда, ул. Гицба, д. 4            </div>
+                                            <div class="bottom-text">
+                                                График работы:                    <span>с 09:00 до 21:30 - перерыв с 14:00 до 15:00</span>
+                                            </div>
+                                        </div>
+                                    </div><div id="city-offices_8" class="city-offices-list">
+
+                                        <div id="city-office_15" class="connect-office-item box-place" data-office="15" data-lat="42.932386" data-lng="41.101839" data-city="8">
+                                            <div class="box-top-text ">
+                                                1) Агудзера, ул. Курчатова, д. 29 (Дом Быта)            </div>
+                                            <div class="bottom-text">
+                                                График работы:                    <span>с 08:30 до 19:00 - перерыв с 14:00 до 15:00</span>
+                                            </div>
+                                        </div>
+                                    </div><div id="city-offices_9" class="city-offices-list">
+
+                                        <div id="city-office_16" class="connect-office-item box-place" data-office="16" data-lat="42.709987" data-lng="41.466955" data-city="9">
+                                            <div class="box-top-text ">
+                                                1) Очамчыра, ул. Шинкуба Б. В., пл. С. В. Багапш            </div>
+                                            <div class="bottom-text">
+                                                График работы:                    <span>с 09:00 до 19:00 - перерыв с 14:00 до 15:00</span>
+                                            </div>
+                                        </div>
+                                    </div><div id="city-offices_10" class="city-offices-list">
+
+                                        <div id="city-office_17" class="connect-office-item box-place" data-office="17" data-lat="42.847931" data-lng="41.685482" data-city="10">
+                                            <div class="box-top-text ">
+                                                1) Ткуарчал, ул. Апсилов, д. 2             </div>
+                                            <div class="bottom-text">
+                                                График работы:                    <span>с 09:00 до 19:00 - перерыв с 14:00 до 15:00</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
@@ -397,8 +465,11 @@ $this->title = 'А-Мобайл – сотовый оператор Абхази
             }
         }
     </style>
-    
-    
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+
+    <script type="text/javascript">
+                                            var offices_marks = [{"id": 2, "lat": "43.001630", "lng": "41.023041"}, {"id": 3, "lat": "43.000628", "lng": "41.019798"}, {"id": 4, "lat": "43.275159", "lng": "40.267144"}, {"id": 5, "lat": "42.620524", "lng": "41.746202"}, {"id": 6, "lat": "42.620524", "lng": "41.746202"}, {"id": 7, "lat": "43.286425", "lng": "40.264468"}, {"id": 8, "lat": "43.395956", "lng": "40.012254"}, {"id": 9, "lat": "43.161719", "lng": "40.341000"}, {"id": 10, "lat": "43.102517", "lng": "40.632708"}, {"id": 11, "lat": "43.087655", "lng": "40.812380"}, {"id": 12, "lat": "43.011419", "lng": "40.970151"}, {"id": 13, "lat": "43.001656", "lng": "41.005770"}, {"id": 14, "lat": "43.024141", "lng": "40.981909"}, {"id": 15, "lat": "42.932386", "lng": "41.101839"}, {"id": 16, "lat": "42.709987", "lng": "41.466955"}, {"id": 17, "lat": "42.847931", "lng": "41.685482"}];
+    </script>
     <div class="section_brands_second">
         <!--<div class="box-circle"></div>-->
 

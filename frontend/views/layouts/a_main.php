@@ -269,8 +269,8 @@ AppAsset::register($this);
    
 
     <script>
-        var __do_lat = 43.001630;
-        var __do_lng = 41.023041;
+        var __do_lat = 43.0016;
+        var __do_lng = 41.023;
 
 
         function openJivoChat() {

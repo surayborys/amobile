@@ -146,6 +146,7 @@ function cityChangeOffice(city_id) {
     $('.city-offices-list').removeClass('active');
     $('#city-offices_' + city_id).addClass('active');
     $('#city-offices_' + city_id + ' .connect-office-item');
+    console.log($('#city-offices_' + city_id + ' .connect-office-item')[0]);
     var default_office = $('#city-offices_' + city_id + ' .connect-office-item')[0];
     $('.connect-office-item').removeClass('active-placemark');
     $('#' + default_office.id).addClass('active-placemark');
