@@ -11,7 +11,7 @@ use frontend\models\Order;
 use frontend\models\forms\OrderForm;
 use yii\db\Expression;
 use yii\web\Response;
-use frontend\models\City;
+
 
 /**
  * Site controller
@@ -60,25 +60,11 @@ class SiteController extends Controller
             $tarifs = false;
         }
         
-        #get cities and offices
-        $cities = City::find()->joinWith('offices', 'city.id = office.city_id')->asArray()->orderBy('id')->all();
-        $cities_offices = [];
-        
-        #check if the city has offices and add to $cities_offices[] only cities with offices
-        if(isset($cities) && !empty($cities)) {
-            foreach ($cities as $city) {
-                if(isset($city['offices']) && !empty($city['offices'])) {
-                    $cities_offices[] = $city;
-                }
-            }
-        }
-        
         #get office marks [{id: int_val_id, lat: float_val_lat, lng: float_val_lng}] :contains ids, latitude and longitude for each office
         $office_marks = $this->getOfficeMarks();
         
         return $this->render('index', [
             'tarifs' => $tarifs,
-            'cities_offices' => $cities_offices,
             'office_marks' => $office_marks
         ]);
     }
@@ -172,25 +158,11 @@ class SiteController extends Controller
             throw new NotFoundHttpException('Искомый тариф не найден ...');
         }
         
-        #get cities and offices
-        $cities = City::find()->joinWith('offices', 'city.id = office.city_id')->asArray()->orderBy('id')->all();
-        $cities_offices = [];
-        
-        #check if the city has offices and add to $cities_offices[] only cities with offices
-        if(isset($cities) && !empty($cities)) {
-            foreach ($cities as $city) {
-                if(isset($city['offices']) && !empty($city['offices'])) {
-                    $cities_offices[] = $city;
-                }
-            }
-        }
-        
         #get office marks [{id: int_val_id, lat: float_val_lat, lng: float_val_lng}] :contains ids, latitude and longitude for each office
         $office_marks = $this->getOfficeMarks();
         
         return $this->render('single', [
             'tarif' => $tarif,
-            'cities_offices' => $cities_offices,
             'office_marks' => $office_marks
         ]);        
     }
@@ -203,7 +175,12 @@ class SiteController extends Controller
     private function getOfficeMarks() 
     {
         $marks = \frontend\models\Office::find()->select(['id', 'lat', 'lng'])->asArray()->all();
-        return json_encode($marks);
+        if($marks) {
+            return json_encode($marks);
+        } else {
+            return json_encode(['id'=>1010101, 'lat'=>0.0, 'lng'=>0.0]);
+        }
+        
     }
 
     
@@ -322,7 +299,7 @@ class SiteController extends Controller
                'success' => false,
                'field' => true,
                'field_name' => 'Ошибка обработки. Невозможно обработать ваш заказ',
-               ];
+        ];
     }
         
 }

@@ -5,6 +5,8 @@
 /* @var json $office_marks */
 
 use yii\helpers\Html;
+use frontend\widgets\officeList\OfficeList;
+use frontend\widgets\cityList\CityList;
 
 $this->title = 'А-Мобайл – сотовый оператор Абхазии';
 ?>
@@ -163,28 +165,7 @@ $this->title = 'А-Мобайл – сотовый оператор Абхази
                                 </ul>
                                 <section id="first-tab-group" class="tabgroup">
                                     <div id="tab1" class="connect-city-list">
-                                        <select class="select_order" id="city-selector" onchange="cityChangeOffice(this.value);">
-
-                                            <!--php: case $cities_offices declared and not empty-->
-                                                    <?php if (isset($cities_offices) && !empty($cities_offices)): ?>
-                                                        <?php $number_of_cities = count($cities_offices); ?>
-                                                        <!--php: first element is selected by default-->
-                                                        <?php for ($j = 0; $j < 1; $j++): ?>
-                                                            <option  value="<?= $cities_offices[$j]['id'] ?>" selected="selected" id="connect-city-item_<?= $cities_offices[$j]['id'] ?>"><?= $cities_offices[$j]['title'] ?></option>
-                                                        <?php endfor; ?>
-                                                        <!--php: if we have more than one element - show them as select items-->
-                                                        <?php if ($number_of_cities > 1): ?>
-                                                            <?php for ($j = 1; $j < $number_of_cities; $j++): ?>
-                                                                <option  value="<?= $cities_offices[$j]['id'] ?>" id="connect-city-item_<?= $cities_offices[$j]['id'] ?>"><?= $cities_offices[$j]['title'] ?></option>
-                                                            <?php endfor; ?>
-                                                        <?php endif; ?>
-
-                                                    <?php endif; ?>
-                                                    <!--php: case $cities_offices not declared or empty-->
-                                                    <?php if (!isset($cities_offices) || empty($cities_offices)): ?>
-                                                    <?php endif; ?>
-                                        </select>
-
+                                       <?= CityList::widget()?>
                                     </div>
                                 </section>
                             </div>
@@ -238,72 +219,8 @@ $this->title = 'А-Мобайл – сотовый оператор Абхази
 
                             <div class="box-placemarks box-placemarks-hiiden">
                                 <img class="down-arrow" src="./img/arrow-down.svg" alt="arrow">
-                               
-                                    <div class="placemarks-wrap" id="placemark_wrap">
-                                            <?php if (isset($cities_offices) && !empty($cities_offices)): ?>
-                                                <?php $number_of_cities = count($cities_offices); ?>
-                                                <!--php: first city element is active-->
-                                                <?php for ($i = 0; $i < 1; $i++): ?>
-                                                    <div id="city-offices_<?= $cities_offices[$i]['id'] ?>" class="city-offices-list active">
-                                                        <?php $number_of_city_offices = count($cities_offices[$i]['offices']) ?>
-                                                        <!--php: first city-office element is active-->
-                                                        <?php for ($m = 0; $m < 1; $m++): ?>
-                                                            <div id="city-office_<?= $cities_offices[$i]['offices'][$m]['id'] ?>" class="connect-office-item box-place active-placemark" data-office="<?= $cities_offices[$i]['offices'][$m]['id'] ?>" data-lat="<?= $cities_offices[$i]['offices'][$m]['lat'] ?>" data-lng="<?= $cities_offices[$i]['offices'][$m]['lng'] ?>" data-city="<?= $cities_offices[$i]['id'] ?>">
-                                                                <div class="box-top-text ">
-                                                                    1) <?= $cities_offices[$i]['title'] ?>, <?= $cities_offices[$i]['offices'][$m]['address'] ?>            </div>
-                                                                <div class="bottom-text">
-                                                                    График работы:                    <span><?= $cities_offices[$i]['offices'][$m]['work_hours'] ?></span>
-                                                                </div>
-                                                            </div>
-                                                        <?php endfor; ?>
-                                                        <!--php: if we have more than 0ne city-office element - show them-->
-                                                        <?php if ($number_of_city_offices > 1): ?>
-                                                            <?php for ($m = 1; $m < $number_of_city_offices; $m++): ?>
-                                                                <div id="city-office_<?= $cities_offices[$i]['offices'][$m]['id'] ?>" class="connect-office-item box-place" data-office="<?= $cities_offices[$i]['offices'][$m]['id'] ?>" data-lat="<?= $cities_offices[$i]['offices'][$m]['lat'] ?>" data-lng="<?= $cities_offices[$i]['offices'][$m]['lng'] ?>" data-city="<?= $cities_offices[$i]['id'] ?>">
-                                                                    <div class="box-top-text ">
-                                                                        1) <?= $cities_offices[$i]['title'] ?>, <?= $cities_offices[$i]['offices'][$m]['address'] ?>            </div>
-                                                                    <div class="bottom-text">
-                                                                        График работы:                    <span><?= $cities_offices[$i]['offices'][$m]['work_hours'] ?></span>
-                                                                    </div>
-                                                                </div>
-                                                            <?php endfor; ?>
-                                                        <?php endif; ?>
-                                                    </div>
-                                                <?php endfor; ?>
-                                                <!--php: if we have more than one city element - show them as unactive-->
-                                                <?php if ($number_of_cities > 1): ?>
-                                                    <?php for ($i = 1; $i < $number_of_cities; $i++): ?>
-                                                        <div id="city-offices_<?= $cities_offices[$i]['id'] ?>" class="city-offices-list">
-                                                            <?php $number_of_city_offices = count($cities_offices[$i]['offices']) ?>
-                                                            <!--php: first city-office element is active-->
-                                                            <?php for ($m = 0; $m < 1; $m++): ?>
-                                                                <div id="city-office_<?= $cities_offices[$i]['offices'][$m]['id'] ?>" class="connect-office-item box-place active-placemark" data-office="<?= $cities_offices[$i]['offices'][$m]['id'] ?>" data-lat="<?= $cities_offices[$i]['offices'][$m]['lat'] ?>" data-lng="<?= $cities_offices[$i]['offices'][$m]['lng'] ?>" data-city="<?= $cities_offices[$i]['id'] ?>">
-                                                                    <div class="box-top-text ">
-                                                                        1) <?= $cities_offices[$i]['title'] ?>, <?= $cities_offices[$i]['offices'][$m]['address'] ?>            </div>
-                                                                    <div class="bottom-text">
-                                                                        График работы:                    <span><?= $cities_offices[$i]['offices'][$m]['work_hours'] ?></span>
-                                                                    </div>
-                                                                </div>
-                                                            <?php endfor; ?>
-                                                            <!--php: if we have more than 0ne city-office element - show them-->
-                                                            <?php if ($number_of_city_offices > 1): ?>
-                                                                <?php for ($m = 1; $m < $number_of_city_offices; $m++): ?>
-                                                                    <div id="city-office_<?= $cities_offices[$i]['offices'][$m]['id'] ?>" class="connect-office-item box-place" data-office="<?= $cities_offices[$i]['offices'][$m]['id'] ?>" data-lat="<?= $cities_offices[$i]['offices'][$m]['lat'] ?>" data-lng="<?= $cities_offices[$i]['offices'][$m]['lng'] ?>" data-city="<?= $cities_offices[$i]['id'] ?>">
-                                                                        <div class="box-top-text ">
-                                                                            1) <?= $cities_offices[$i]['title'] ?>, <?= $cities_offices[$i]['offices'][$m]['address'] ?>            </div>
-                                                                        <div class="bottom-text">
-                                                                            График работы:                    <span><?= $cities_offices[$i]['offices'][$m]['work_hours'] ?></span>
-                                                                        </div>
-                                                                    </div>
-                                                                <?php endfor; ?>
-                                                            <?php endif; ?>
-                                                        </div>    
-                                                    <?php endfor; ?>
-                                                <?php endif; ?>
-                                            <?php endif; ?>    
-                                                
-                                           
-                                        </div>
+                                    <?php /*use widget for displaying offices*/?>
+                                    <?= OfficeList::widget();?>
                   
                             </div>
                         </div>
