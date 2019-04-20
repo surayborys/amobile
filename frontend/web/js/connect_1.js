@@ -90,6 +90,10 @@ function chooseOffice(ev) {
     $('.connect-office-item').removeClass('active-placemark');
 
     map_office = this.options.title;
+    
+    //synchronize select and map 
+    $('#city-office_' + map_office).addClass('active-placemark');
+       
     //recenter the map 
     mymap.panTo(this.getLatLng());
     //reload the map
