@@ -10,6 +10,7 @@ return [
     'id' => 'app-frontend',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
+    'language' => 'ru-RU', 
     'controllerNamespace' => 'frontend\controllers',
     'layout' => 'a_main',
     'components' => [
@@ -54,6 +55,9 @@ return [
         ],
         'delimiter' => [
             'class' => '\frontend\components\UMdelimiter',
+        ],
+        'authManager' => [
+            'class' => 'yii\rbac\DbManager',
         ],
     ],
     'params' => $params,
