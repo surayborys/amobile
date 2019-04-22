@@ -82,12 +82,12 @@ $this->title = 'A-mobile'
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <span class="glyphicon glyphicon-th-list text-primary"></span><a href="/admin/tarif/tarif/create">Управлять сериями тарифов</a>
+                                                    <span class="glyphicon glyphicon-th-list text-primary"></span><a href="/admin/tarif/serial">Управлять сериями тарифов</a>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <span class="glyphicon glyphicon-gbp text-primary"></span><a href="/admin/tarif/tarif/create">Управлять единицами измерения тарификации</a>
+                                                    <span class="glyphicon glyphicon-gbp text-primary"></span><a href="/admin/tarif/unit">Управлять единицами измерения тарификации</a>
                                                 </td>
                                             </tr>
                                         </table>

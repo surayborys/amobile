@@ -14,6 +14,9 @@ use Yii;
  */
 class Serial extends \yii\db\ActiveRecord
 {
+    
+    const SERIAL_STATUS_ACTIVE = 10;
+    const SERIAL_STATUS_UNACTIVE = 0;
     /**
      * {@inheritdoc}
      */
@@ -30,6 +33,7 @@ class Serial extends \yii\db\ActiveRecord
         return [
             [['status_active', 'order_weight'], 'integer'],
             [['title'], 'string', 'max' => 255],
+            [['title'], 'required']
         ];
     }
 
@@ -40,9 +44,9 @@ class Serial extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'title' => 'Title',
-            'status_active' => 'Status Active',
-            'order_weight' => 'Order Weight',
+            'title' => 'Название',
+            'status_active' => 'Статус (актив/неактив)',
+            'order_weight' => 'Вес при сортировке',
         ];
     }
 }
