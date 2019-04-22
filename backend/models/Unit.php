@@ -43,6 +43,7 @@ class Unit extends \yii\db\ActiveRecord
     {
         return [
             [['title'], 'string', 'max' => 255],
+            [['title'], 'required']
         ];
     }
 

@@ -33,7 +33,7 @@ class Office extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['city_id'], 'required'],
+            [['city_id', 'lat', 'lng'], 'required'],
             [['city_id'], 'integer'],
             [['lat', 'lng'], 'number'],
             [['address', 'work_hours', 'break_hours'], 'string', 'max' => 255],
@@ -48,12 +48,12 @@ class Office extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'city_id' => 'City ID',
-            'address' => 'Address',
-            'lat' => 'Lat',
-            'lng' => 'Lng',
-            'work_hours' => 'Work Hours',
-            'break_hours' => 'Break Hours',
+            'city_id' => 'Город',
+            'address' => 'Адрес',
+            'lat' => 'Координаты: широта',
+            'lng' => 'Координаты: долгота',
+            'work_hours' => 'Рабочее время',
+            'break_hours' => 'Время перерыва',
         ];
     }
 

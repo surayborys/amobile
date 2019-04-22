@@ -17,6 +17,9 @@ return [
         'tarif' => [
             'class' => 'backend\modules\tarif\Module',
         ],
+        'cityoffice' => [
+            'class' => 'backend\modules\cityoffice\Module',
+        ],
     ],
     'components' => [
         'request' => [

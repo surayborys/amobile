@@ -29,6 +29,7 @@ class City extends \yii\db\ActiveRecord
     {
         return [
             [['title'], 'string', 'max' => 255],
+            [['title'], 'required']
         ];
     }
 
@@ -39,7 +40,7 @@ class City extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'title' => 'Title',
+            'title' => 'Название',
         ];
     }
 

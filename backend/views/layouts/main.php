@@ -134,7 +134,7 @@ $this->title = 'A-mobile'
                                 <div class="panel-heading">
                                     <h4 class="panel-title">
                                         <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour"><span class="glyphicon glyphicon-globe">
-                                            </span>&nbsp;Управлять городами</a>
+                                            </span>&nbsp;Управлять городами и офисами</a>
                                     </h4>
                                 </div>
                                 <div id="collapseFour" class="panel-collapse collapse">
@@ -142,56 +142,22 @@ $this->title = 'A-mobile'
                                         <table class="table">
                                             <tr>
                                                 <td>
-                                                    <span class="glyphicon glyphicon-usd"></span><a href="http://www.jquery2dotnet.com">Sales</a>
+                                                    <span class="glyphicon glyphicon-cog"></span><a href="/admin/cityoffice/city">Управлять городами в списке</a>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <span class="glyphicon glyphicon-user"></span><a href="http://www.jquery2dotnet.com">Customers</a>
+                                                    <span class="glyphicon glyphicon-plus"></span><a href="/admin/cityoffice/city/create">Добавить новый город</a>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <span class="glyphicon glyphicon-tasks"></span><a href="http://www.jquery2dotnet.com">Products</a>
+                                                    <span class="glyphicon glyphicon-cog"></span><a href="/admin/cityoffice/office">Управлять офисами в списке</a>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <span class="glyphicon glyphicon-shopping-cart"></span><a href="http://www.jquery2dotnet.com">Shopping Cart</a>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h4 class="panel-title">
-                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour"><span class="glyphicon glyphicon-map-marker">
-                                            </span>&nbsp;Управлять офисами</a>
-                                    </h4>
-                                </div>
-                                <div id="collapseFour" class="panel-collapse collapse">
-                                    <div class="panel-body">
-                                        <table class="table">
-                                            <tr>
-                                                <td>
-                                                    <span class="glyphicon glyphicon-usd"></span><a href="http://www.jquery2dotnet.com">Sales</a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <span class="glyphicon glyphicon-user"></span><a href="http://www.jquery2dotnet.com">Customers</a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <span class="glyphicon glyphicon-tasks"></span><a href="http://www.jquery2dotnet.com">Products</a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <span class="glyphicon glyphicon-shopping-cart"></span><a href="http://www.jquery2dotnet.com">Shopping Cart</a>
+                                                    <span class="glyphicon glyphicon-plus"></span><a href="/admin/cityoffice/office/create">Добавить новый офис</a>
                                                 </td>
                                             </tr>
                                         </table>
