@@ -98,11 +98,11 @@ $this->title = 'A-mobile'
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h4 class="panel-title">
-                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree"><span class="glyphicon glyphicon-user">
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"><span class="glyphicon glyphicon-user">
                                             </span>&nbsp;Управлять пользователями</a>
                                     </h4>
                                 </div>
-                                <div id="collapseThree" class="panel-collapse collapse">
+                                <div id="collapseTwo" class="panel-collapse collapse">
                                     <div class="panel-body">
                                         <table class="table">
                                             <tr>
@@ -133,11 +133,11 @@ $this->title = 'A-mobile'
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h4 class="panel-title">
-                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour"><span class="glyphicon glyphicon-globe">
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree"><span class="glyphicon glyphicon-globe">
                                             </span>&nbsp;Управлять городами и офисами</a>
                                     </h4>
                                 </div>
-                                <div id="collapseFour" class="panel-collapse collapse">
+                                <div id="collapseThree" class="panel-collapse collapse">
                                     <div class="panel-body">
                                         <table class="table">
                                             <tr>
@@ -164,11 +164,11 @@ $this->title = 'A-mobile'
                                     </div>
                                 </div>
                             </div>
-                            <div class="panel panel-default">
+                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h4 class="panel-title">
-                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour"><span class="glyphicon glyphicon-plus-sign">
-                                            </span>&nbsp;Управлять заявками на подключение</a>
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour"><span class="glyphicon glyphicon-globe">
+                                            </span>&nbsp;Управлять городами и офисами</a>
                                     </h4>
                                 </div>
                                 <div id="collapseFour" class="panel-collapse collapse">
@@ -176,22 +176,7 @@ $this->title = 'A-mobile'
                                         <table class="table">
                                             <tr>
                                                 <td>
-                                                    <span class="glyphicon glyphicon-usd"></span><a href="http://www.jquery2dotnet.com">Sales</a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <span class="glyphicon glyphicon-user"></span><a href="http://www.jquery2dotnet.com">Customers</a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <span class="glyphicon glyphicon-tasks"></span><a href="http://www.jquery2dotnet.com">Products</a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <span class="glyphicon glyphicon-shopping-cart"></span><a href="http://www.jquery2dotnet.com">Shopping Cart</a>
+                                                    <span class="glyphicon glyphicon-cog"></span><a href="/admin/order/order">Перейти к управлению заявками на подключение</a>
                                                 </td>
                                             </tr>
                                         </table>

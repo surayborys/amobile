@@ -33,7 +33,13 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'city_id',
+            [
+                'attribute' => 'city_id',
+                'format' => 'html',
+                'value' => function($office){
+                    return  $office->city->title;
+                }
+            ],
             'address',
             'lat',
             'lng',

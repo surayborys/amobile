@@ -1,7 +1,6 @@
 <?php
 
-namespace frontend\models;
-use frontend\models\Tarif;
+namespace backend\models;
 
 use Yii;
 
@@ -36,9 +35,10 @@ class Order extends \yii\db\ActiveRecord
     #use this value for creating order with non-setted tarif_id
     const DEFAULT_TARIF_ID = 10101010;
     
-    public function __construct() {
-         $this->on(self::EVENT_AFTER_INSERT, [$this, 'setCreatedAtValue']);
+    public function __construct($config = array()) {
+         $this->on(self::EVENT_AFTER_UPDATE, [$this, 'setPerformedOnValue']);
     }
+
 
     /**
      * {@inheritdoc}
@@ -54,10 +54,10 @@ class Order extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['phone_number', 'email', 'mode', 'fullname', 'tarif_id'], 'required'],
+            [['fullname', 'phone_number', 'email', 'mode'], 'required'],
             [['mode', 'office_id', 'tarif_id', 'status'], 'integer'],
             [['created_at', 'performed_on'], 'safe'],
-            [['fullname','phone_number', 'email', 'city', 'street', 'housing', 'house', 'apartment_office_num'], 'string', 'max' => 255],
+            [['fullname', 'phone_number', 'email', 'city', 'street', 'housing', 'house', 'apartment_office_num'], 'string', 'max' => 255],
         ];
     }
 
@@ -68,35 +68,32 @@ class Order extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'fullname' => 'Full Name',
-            'phone_number' => 'Phone Number',
-            'email' => 'Email',
-            'mode' => 'Mode',
-            'office_id' => 'Office ID',
-            'city' => 'City',
-            'street' => 'Street',
-            'housing' => 'Housing',
-            'house' => 'House',
-            'apartment_office_num' => 'Apartment Office Num',
-            'created_at' => 'Created At',
-            'performed_on' => 'Performed On',
-            'tarif_id' => 'Tarif ID',
-            'status' => 'Status'
+            'fullname' => 'ФИО',
+            'phone_number' => 'Номер телефона',
+            'email' => 'E-mail',
+            'mode' => 'Тип заявки',
+            'office_id' => 'Офис',
+            'city' => 'Город',
+            'street' => 'Улица',
+            'housing' => 'Корпус',
+            'house' => 'Дом',
+            'apartment_office_num' => 'Номер квартиры/офиса',
+            'created_at' => 'Заявка создана',
+            'performed_on' => 'Заявка передана на выполнение',
+            'tarif_id' => 'Тариф',
+            'status' => 'Статус',
         ];
     }
     
     /**
-     * @return \yii\db\ActiveQuery
+     * sets value of 'performed_on' attribute to current date-time
+     * 
+     * @return boolean
      */
-    public function getTarif()
+    public function setPerformedOnValue()
     {
-        return $this->hasOne(Tarif::className(), ['id' => 'tarif_id']);
-    }
-    
-    public function setCreatedAtValue() {
-        
-        $this->created_at = date("Y-m-d H:i:s");
-        $this->off(self::EVENT_AFTER_INSERT, [$this, 'setCreatedAtValue']);
+        $this->performed_on = date("Y-m-d H:i:s");
+         $this->off(self::EVENT_AFTER_UPDATE, [$this, 'setPerformedOnValue']);
         return $this->save();
     }
 }

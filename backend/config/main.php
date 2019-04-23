@@ -20,6 +20,9 @@ return [
         'cityoffice' => [
             'class' => 'backend\modules\cityoffice\Module',
         ],
+        'order' => [
+            'class' => 'backend\modules\order\Module',
+        ],
     ],
     'components' => [
         'request' => [
